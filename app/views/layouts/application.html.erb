@@ -7,11 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="<%= root_url %>" class="navbar-brand">DishDash</a>
+      <ul class="nav navbar-nav">
+        <li><a href="#">Hello, <%= current_user.username %></a></li>
+      </ul>
+    </div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    <ul class="nav navbar-nav pull-right">
+      <li><%= button_to "log out", destroy_user_session_url, method: :delete, class: "btn btn-warning navbar-btn" %></li>
+    </ul>
+  </div>
+</nav>
 
 <div class="container">
+  <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+    <div class="alert alert-warning"><%= alert %></div>
+  <% end %>
   <%= yield %>
 </div> <!-- /.container -->
 
