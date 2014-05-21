@@ -6,6 +6,12 @@ class RecipesController < ApplicationController
     render :index
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+    @ingredients = @recipe.ingredients
+    render :show
+  end
+
   private
 
   def recipe_params

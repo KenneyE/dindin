@@ -13,4 +13,16 @@
  *= require_tree .
  *= require_self
  */
+@import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$display-font: 'Pacifico', cursive;
 @import "bootstrap";
+
+.navbar-brand{
+  font-family: $display-font;
+  font-size: 26px;
+}
+
+.btn {
+  font-family: $display-font;
+}
