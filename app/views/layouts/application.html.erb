@@ -19,9 +19,13 @@
       <% end %>
     </div>
 
-    <ul class="nav navbar-nav pull-right">
-      <li><%= button_to "log out", destroy_user_session_url, method: :delete, class: "btn btn-warning navbar-btn" %></li>
-    </ul>
+      <ul class="nav navbar-nav pull-right">
+      <% if user_signed_in? %>
+        <li><%= button_to "Log out", destroy_user_session_url, method: :delete, class: "btn btn-warning navbar-btn" %></li>
+      <% else %>
+        <li><%= button_to "Sign in", new_user_session_url, class: "btn btn-primary navbar-btn" %></li>
+      <% end %>
+      </ul>
   </div>
 </nav>
 

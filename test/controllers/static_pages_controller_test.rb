@@ -1,12 +1,12 @@
-require 'test_helper'
+require "test_helper"
 
 class StaticPagesControllerTest < ActionController::TestCase
-  test "should get home" do
+  def test_home
     get :home
     assert_response :success
   end
 
-  test "should get about" do
+  def test_about
     get :about
     assert_response :success
   end

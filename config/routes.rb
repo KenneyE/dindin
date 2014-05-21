@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'recipes#index'
+  root to: 'static_pages#home'
 
-  resources :recipes
-  resources :ingredients
-  
+  namespace :api, default: { format: :json } do
+    resources :recipes
+    resources :ingredients
+  end
+
   devise_for :users
 
   get 'static_pages/about'

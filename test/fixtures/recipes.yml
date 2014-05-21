@@ -5,10 +5,10 @@
 #  id                :integer          not null, primary key
 #  title             :string(255)      not null
 #  body              :text             not null
+#  short_description :text             not null
+#  author_id         :integer          not null
 #  created_at        :datetime
 #  updated_at        :datetime
-#  author_id         :integer          not null
-#  short_description :text             not null
 #
 
 # Read about fixtures at
@@ -17,7 +17,11 @@
 one:
   title: MyString
   body: MyText
+  short_description: MyText
+  author_id: 1
 
 two:
   title: MyString
   body: MyText
+  short_description: MyText
+  author_id: 1
