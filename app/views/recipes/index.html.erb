@@ -1,6 +1,9 @@
-<h1>Recipes</h1>
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.title, recipe_url(recipe) %></li>
-  <% end %>
-</ul>
+<div class="col-md-10 col-md-offset-1 recipe">
+    <h1 class="text-center">Recipes</h1>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li><%= link_to recipe.title, recipe_url(recipe) %></li>
+    <% end %>
+    <li><%= link_to "add new recipe", new_recipe_url %></li>
+  </ul>
+</div>

@@ -10,10 +10,16 @@
 #
 
 class Ingredient < ActiveRecord::Base
+  CATEGORIES = %w( Protein Vegetables Fruit Dairy )
+
   validates :name, :category, presence: true
   validates :name, uniqueness: true
 
   has_many :ingredient_uses
 
   has_many :recipes, through: :ingredient_uses
+
+  def self.categories
+    CATEGORIES
+  end
 end

@@ -16,7 +16,15 @@
 @import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $display-font: 'Pacifico', cursive;
+$main-color: #5A966E;
+$navbar-default-bg: darken($main-color, 10%);
+$navbar-default-color: white;
+$navbar-default-link-color: white;
 @import "bootstrap";
+
+body{
+  background-color: $main-color;
+}
 
 .navbar-brand{
   font-family: $display-font;
@@ -25,4 +33,15 @@ $display-font: 'Pacifico', cursive;
 
 .btn {
   font-family: $display-font;
+}
+
+.recipe{
+  background-color: white;
+  border: 3px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.recipe-show{
+  min-height: 600px;
 }

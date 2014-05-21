@@ -1,9 +1,27 @@
 class RecipesController < ApplicationController
   before_action :ensure_signed_in
 
+  def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.author_id = current_user.id
+    if @recipe.save
+      redirect_to @recipe
+    else
+      flash.now[:errors] = @recipe.errors.full_messages
+      render :new
+    end
+  end
+
   def index
     @recipes = Recipe.all
     render :index
+  end
+
+  def new
+    @recipe = Recipe.new
+    @ingredients = Ingredient.all
+    @ingredient = Ingredient.new
+    render :new
   end
 
   def show
@@ -15,7 +33,8 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :body, ingredient_ids: [])
+    params.require(:recipe)
+      .permit(:title, :body, :short_description, ingredient_ids: [])
   end
 
   def ensure_signed_in

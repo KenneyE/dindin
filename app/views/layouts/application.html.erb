@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dishdash</title>
+  <title>DinDin</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,10 +10,13 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="<%= root_url %>" class="navbar-brand">DishDash</a>
-      <ul class="nav navbar-nav">
-        <li><a href="#">Hello, <%= current_user.username %></a></li>
-      </ul>
+      <a href="<%= root_url %>" class="navbar-brand">din din</a>
+      <% if user_signed_in? %>
+        <ul class="nav navbar-nav">
+          <li><a href="#">Hello, <%= current_user.username %></a></li>
+          <li><%= link_to "Recipes", root_url %></li>
+        </ul>
+      <% end %>
     </div>
 
     <ul class="nav navbar-nav pull-right">
@@ -28,6 +31,11 @@
   <% end %>
   <% if alert %>
     <div class="alert alert-warning"><%= alert %></div>
+  <% end %>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <div class="alert-alert-warning"><%= error %></div>
+    <% end %>
   <% end %>
   <%= yield %>
 </div> <!-- /.container -->
