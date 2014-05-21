@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521053818) do
+ActiveRecord::Schema.define(version: 20140521074642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredient_uses", force: true do |t|
+    t.integer  "recipe_id",     null: false
+    t.integer  "ingredient_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ingredient_uses", ["ingredient_id"], name: "index_ingredient_uses_on_ingredient_id", using: :btree
+  add_index "ingredient_uses", ["recipe_id", "ingredient_id"], name: "index_ingredient_uses_on_recipe_id_and_ingredient_id", unique: true, using: :btree
+  add_index "ingredient_uses", ["recipe_id"], name: "index_ingredient_uses_on_recipe_id", using: :btree
+
+  create_table "ingredients", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "category",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true, using: :btree
+
+  create_table "recipes", force: true do |t|
+    t.string   "title",      null: false
+    t.text     "body",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "author_id",  null: false
+  end
+
+  add_index "recipes", ["author_id"], name: "index_recipes_on_author_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,9 +59,11 @@ ActiveRecord::Schema.define(version: 20140521053818) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
