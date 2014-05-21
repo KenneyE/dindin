@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
+gem 'devise'
+gem 'minitest-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record
@@ -40,9 +42,14 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
+  gem 'debugger'
+  gem 'letter_opener'
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'faker'
   gem 'capybara'
 end
