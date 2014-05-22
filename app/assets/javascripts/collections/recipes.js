@@ -6,7 +6,7 @@ Dindin.Collections.Recipes = Backbone.Collection.extend({
     if (model) {
       model.fetch();
     } else {
-      model = new Dindin.Models.recipe({id: id});
+      model = new Dindin.Models.Recipe({id: id});
       model.fetch({
         success: function(){
           recipes.add(model);

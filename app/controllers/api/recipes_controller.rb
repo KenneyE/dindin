@@ -25,8 +25,7 @@ module Api
 
     def show
       @recipe = Recipe.find(params[:id])
-      @ingredients = @recipe.ingredients
-      render :show
+      render partial: "api/recipes/recipe", locals: { recipe: @recipe }
     end
 
     private
