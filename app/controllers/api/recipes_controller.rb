@@ -4,10 +4,9 @@ module Api
       @recipe = Recipe.new(recipe_params)
       @recipe.author_id = current_user.id
       if @recipe.save
-        redirect_to @recipe
+        render partial: "api/recipes/recipe", locals: { recipe: @recipe }
       else
-        flash.now[:errors] = @recipe.errors.full_messages
-        render :new
+        render @recipe.errors.full_messages
       end
     end
 

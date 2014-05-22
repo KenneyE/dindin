@@ -1,16 +1,33 @@
 Dindin.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "recipesIndex",
-    "recipes/:id": "recipeShow"
+    "recipes/new": "recipeNew",
+    "recipes/:id": "recipeShow",
+    "ingredients/new": "ingredientNew",
+  },
+
+  ingredientNew: function(){
+    Dindin.Collections.ingredients.fetch();
+    var ingredientNewView = new Dindin.Views.IngredientNew({
+      collection: Dindin.Collections.ingredients
+    })
+    this._swapView(ingredientNewView);
   },
 
   recipesIndex: function(){
-    alert('fired');
     Dindin.Collections.recipes.fetch();
     var recipesIndexView = new Dindin.Views.RecipesIndex({
       collection: Dindin.Collections.recipes
     })
     this._swapView(recipesIndexView);
+  },
+
+  recipeNew: function(){
+    var recipe = new Dindin.Models.Recipe();
+    var recipeNewView = new Dindin.Views.RecipeNew({
+      model: recipe
+    })
+    this._swapView(recipeNewView);
   },
 
   recipeShow: function(id){

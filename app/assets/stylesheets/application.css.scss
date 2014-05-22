@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-@import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
+ 
+// @import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $display-font: 'Pacifico', cursive;
 $main-color: #5A966E;
@@ -45,4 +46,14 @@ body{
 
 .recipe-show{
   min-height: 600px;
+}
+
+#selected-ingredients{
+  border: thin solid #eee;
+  min-height: 50px;
+}
+
+.ingredient-pane{
+  border: thin solid #eee;
+  min-height: 50px;
 }

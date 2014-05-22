@@ -1,13 +1,12 @@
 module Api
-  class IngredientsController < Api Controller
+  class IngredientsController < ApiController
     def create
       @ingredient = Ingredient.new(ingredient_params)
       if @ingredient.save
-        # render json: @ingredient
-        redirect_to new_recipe_url
+        render partial: "api/ingedients/ingedient", 
+          locals: { ingedient: @ingredient }
       else
-        flash.now[:errors] = @ingredient.errors.full_messages
-        render json: @ingredient.errors
+        render @ingredient.errors.full_messages
       end
     end
 
