@@ -1,6 +1,4 @@
 Dindin.Models.Recipe = Backbone.Model.extend({
-  urlRoot: '/api/recipes',
-
   ingredients: function(){
     this._ingredients = this._ingredients ||
       new Dindin.Collections.RecipeIngredients([], { recipe: this });
@@ -15,4 +13,6 @@ Dindin.Models.Recipe = Backbone.Model.extend({
 
     return resp;
   },
+
+  urlRoot: '/api/recipes',
 })

@@ -1,4 +1,4 @@
-Dindin.Views.IngredientNew = Backbone.View.extend({
+Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
   initialize: function(){
     this.listenTo(this.collection, 'sync', this.render);
   },
@@ -9,7 +9,7 @@ Dindin.Views.IngredientNew = Backbone.View.extend({
     'click #selected-ingredients button': 'unSelectIngredient',
   },
 
-  template: JST['ingredients/_new'],
+  template: JST['ingredients/_selector'],
 
   render: function(){
     var renderedContent = this.template({

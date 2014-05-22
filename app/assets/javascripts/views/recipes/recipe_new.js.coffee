@@ -1,4 +1,12 @@
-Dindin.Views.RecipeNew = Backbone.View.extend({
+Dindin.Views.RecipeNew = Backbone.CompositeView.extend({
+  initialize: ->
+    Dindin.Collections.ingredients.fetch();
+    ingredientSelector = new Dindin.Views.IngredientSelector({ 
+      collection: Dindin.Collections.ingredients
+      })
+    this.addSubview('.ingredient-selector-box', ingredientSelector);
+    return
+
   className: 'col-md-6 col-md-offset-3 recipe'
 
   events: {
@@ -13,17 +21,12 @@ Dindin.Views.RecipeNew = Backbone.View.extend({
     })
 
     this.$el.html(renderedContent)
-    Dindin.Collections.ingredients.fetch();
-    ingNew = new Dindin.Views.IngredientNew({
-      collection: Dindin.Collections.ingredients
-      })
-    this.$el.append(ingNew.render().$el);
+    this.renderSubviews()
     this
 
   addRecipe: (event) ->
     event.preventDefault()
     formData = $(event.target).serializeJSON()
-    debugger
     recipe = new Dindin.Models.Recipe(formData)
     recipe.save({}, {
       success: ->
