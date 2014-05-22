@@ -11,7 +11,12 @@ module Api
     end
 
     def index
-      @recipes = Recipe.includes(:ingredients).all
+      if params[:ingredient_ids]
+        @recipes = @recipes = Recipe.includes(:ingredients)
+        .find_with_all_ingredients(params[:ingredient_ids])
+      else
+        @recipes = Recipe.includes(:ingredients).all
+      end
       render :index
     end
 

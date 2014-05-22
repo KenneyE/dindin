@@ -19,4 +19,24 @@ class Recipe < ActiveRecord::Base
   has_many :ingredient_uses
 
   has_many :ingredients, through: :ingredient_uses
+
+  def self.find_with_all_ingredients(ids)
+    return Recipe.find_by_sql([<<-SQL, { ids: ids, num: ids.length }])
+      SELECT 
+        recipes.*
+      FROM 
+        recipes JOIN ingredient_uses
+        ON 
+          recipes.id = ingredient_uses.recipe_id
+        JOIN ingredients
+        ON 
+          ingredients.id = ingredient_uses.ingredient_id
+      WHERE 
+        ingredients.id IN (:ids)
+      GROUP BY
+        recipes.id
+      HAVING
+        COUNT(ingredients.id) = :num;
+    SQL
+  end
 end
