@@ -34,3 +34,7 @@ group :test do
   gem 'faker'
   gem 'capybara'
 end
+
+group :production, :staging do
+  gem 'rails_12factor'
+end
