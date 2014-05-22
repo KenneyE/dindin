@@ -1,0 +1,16 @@
+<h1>Search for Recipes</h1>
+<hr>
+<h3>Find Recipes Using:</h3>
+<div class="ingredient-selector-box"></div>
+<form id="recipe-search-form">
+  <input type="submit" value="Search" class="btn btn-lg btn-primary pull-right">
+</form>
+<h3>Matching Recipes:</h3>
+<hr>
+<div id="search-results">
+  <ul>
+    <% recipes.each(function(recipe) { %>
+      <li><a href="#/recipes/<%= recipe.id %>"><%= recipe.escape('title') %></a></li>
+    <% }); %>
+  </ul>
+</div>

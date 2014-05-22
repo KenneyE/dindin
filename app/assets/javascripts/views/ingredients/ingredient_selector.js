@@ -1,5 +1,8 @@
 Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
-  initialize: function(){
+  initialize: function(options){
+    this.formElSelector = options.formElSelector;
+    Dindin.Collections.ingredients.fetch();
+    this.collection = Dindin.Collections.ingredients;
     this.listenTo(this.collection, 'sync', this.render);
   },
 
@@ -28,7 +31,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     var content = $(event.target);
     var id = content.data('id');
     $('#selected-ingredients').append(content);
-    $('#new-recipe-form').prepend("<input type='hidden' name='recipe[ingredient_ids][]' value='" + id + "'>");
+    $(this.formElSelector).prepend("<input type='hidden' name='recipe[ingredient_ids][]' value='" + id + "'>");
   },
 
   unSelectIngredient: function(event){
@@ -38,7 +41,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     var category = $(event.target).data('category');
     $(category).append(content);
     $("a[data-category='" + category + "']").tab('show');
-    var $inputToRemove = $('#new-recipe-form').find("input[value='" + id + "']");
+    var $inputToRemove = $(this.formElSelector).find("input[value='" + id + "']");
     $inputToRemove.remove();
   },
 

@@ -1,10 +1,9 @@
 Dindin.Views.RecipeNew = Backbone.CompositeView.extend({
   initialize: ->
-    Dindin.Collections.ingredients.fetch();
-    ingredientSelector = new Dindin.Views.IngredientSelector({ 
-      collection: Dindin.Collections.ingredients
+    ingredientSelector = new Dindin.Views.IngredientSelector({
+      formElSelector: '#new-recipe-form'
       })
-    this.addSubview('.ingredient-selector-box', ingredientSelector);
+    this.addSubview('.ingredient-selector-box', ingredientSelector)
     return
 
   className: 'col-md-6 col-md-offset-3 recipe'
