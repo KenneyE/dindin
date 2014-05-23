@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
- 
-// @import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
+
+ @import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $display-font: 'Pacifico', cursive;
 $main-color: #5A966E;
@@ -57,6 +57,74 @@ body{
   }
 }
 
+.caption {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+
+    /* Only the -webkit- prefix is required these days */
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+}
+
+.caption::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    transition: background .35s ease-out;
+}
+
+.caption:hover::before {
+    background: rgba(0, 0, 0, .5);
+}
+
+.caption__media {
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 3px solid #BFA386;
+}
+
+.caption__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 13px;
+    left: 0;
+    padding: 10px;
+    color: white;
+
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+
+    transition: -webkit-transform .35s ease-out;
+    transition:         transform .35s ease-out;
+}
+
+.caption:hover .caption__overlay {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+}
+
+.caption__overlay__title {
+    -webkit-transform: translateY( -webkit-calc(-100% - 10px) );
+            transform: translateY( calc(-100% - 10px) );
+
+    transition: -webkit-transform .35s ease-out;
+    transition:         transform .35s ease-out;
+}
+
+.caption:hover .caption__overlay__title {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+}
+
 .recipe{
   background-color: white;
   border: 3px solid #eee;
@@ -64,6 +132,19 @@ body{
   padding: 10px;
   h1{
     text-align: center;
+  }
+}
+
+.recipe-image{
+  border: 3px solid #BFA386;
+}
+
+.recipe-list{
+  list-style: none;
+  padding-left: 0;
+  li{
+    display: inline-block;
+    padding: 15px;
   }
 }
 

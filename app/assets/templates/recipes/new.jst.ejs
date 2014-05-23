@@ -2,20 +2,20 @@
 <hr>
 <form id="new-recipe-form">
   <label for="recipe-title">Title</label>
-  <input type="text" name="recipe[title]" id="recipe-title" 
+  <input type="text" name="recipe[title]" id="recipe-title"
     placeholder="What do you call your recipe?" class="form-control"><br>
   <span class="btn btn-success btn-file">
     Upload an Image<input type="file" multiple id="recipe-image" name="recipe[image]" class="form-control">
   </span><br>
   <label for="recipe-description">Short Description</label>
-  <textarea name="recipe[short_description]" 
-    id="recipe-description" class="form-control" 
+  <textarea name="recipe[short_description]"
+    id="recipe-description" class="form-control"
     rows="4"
     placeholder="What makes this recipe so great?"></textarea><br>
   <div class="ingredient-selector-box"></div>
   <br><label for="recipe-body">Instructions:</label>
-  <textarea name="recipe[body]" 
-    id="recipe-description" class="form-control" 
+  <textarea name="recipe[body]"
+    id="recipe-description" class="form-control"
     rows="8"
     placeholder="How do you make it? You can use markdown to style your instructions here."></textarea><br>
     <input type="submit" value="Create Recipe" class="btn btn-lg btn-primary pull-right">

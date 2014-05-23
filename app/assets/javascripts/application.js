@@ -16,6 +16,7 @@
 //= require backbone
 //= require bootstrap
 //= require marked
+//= require dropzone
 //= require serializeJSON
 //= require dindin
 //= require_tree ../templates

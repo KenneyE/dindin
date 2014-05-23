@@ -1,8 +1,7 @@
 <h1 class="text-center">Recipes</h1>
 <hr>
-<ul>
-  <% recipes.each(function(recipe) { %>
-    <li><a href="#/recipes/<%= recipe.id %>"><%= recipe.escape('title') %></a></li>
-  <% }); %>
-  <li><a href="#/recipes/new">add new recipe</a></li>
-</ul>
+<ul class="recipe-list"></ul>
+<hr>
+<div class="text-center">
+  <a href="#/recipes/new">add new recipe</a>
+</div>

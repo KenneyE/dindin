@@ -24,21 +24,21 @@ class Recipe < ActiveRecord::Base
 
   has_many :ingredients, through: :ingredient_uses
 
-  has_attached_file :image, styles: { big: '600x600>', thumb: '50x50>'}
+  has_attached_file :image, styles: { big: '400x400>', thumb: '175x175>'}
   validates_attachment_content_type :image, content_type: %w(image/jpeg image/jpg image/gif image/png)
 
   def self.find_with_all_ingredients(ids)
     return Recipe.find_by_sql([<<-SQL, { ids: ids, num: ids.length }])
-      SELECT 
+      SELECT
         recipes.*
-      FROM 
+      FROM
         recipes JOIN ingredient_uses
-        ON 
+        ON
           recipes.id = ingredient_uses.recipe_id
         JOIN ingredients
-        ON 
+        ON
           ingredients.id = ingredient_uses.ingredient_id
-      WHERE 
+      WHERE
         ingredients.id IN (:ids)
       GROUP BY
         recipes.id

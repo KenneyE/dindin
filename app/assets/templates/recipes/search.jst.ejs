@@ -7,10 +7,4 @@
 </form>
 <h3>Matching Recipes:</h3>
 <hr>
-<div id="search-results">
-  <ul>
-    <% recipes.each(function(recipe) { %>
-      <li><a href="#/recipes/<%= recipe.id %>"><%= recipe.escape('title') %></a></li>
-    <% }); %>
-  </ul>
-</div>
+<ul class="recipe-list"></ul>
