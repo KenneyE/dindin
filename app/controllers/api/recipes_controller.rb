@@ -36,7 +36,7 @@ module Api
 
     def recipe_params
       params.require(:recipe)
-        .permit(:title, :body, :short_description, ingredient_ids: [])
+        .permit(:title, :body, :short_description, :image, ingredient_ids: [])
     end
   end
 end

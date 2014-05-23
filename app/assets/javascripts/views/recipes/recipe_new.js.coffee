@@ -10,6 +10,7 @@ Dindin.Views.RecipeNew = Backbone.CompositeView.extend({
 
   events: {
     'submit #new-recipe-form': 'addRecipe',
+    'change #recipe-image': 'handlePhoto',
   },
 
   template: JST['recipes/new'],
@@ -26,6 +27,7 @@ Dindin.Views.RecipeNew = Backbone.CompositeView.extend({
   addRecipe: (event) ->
     event.preventDefault()
     formData = $(event.target).serializeJSON()
+    formData.recipe.image = this.photoFile
     recipe = new Dindin.Models.Recipe(formData)
     recipe.save({}, {
       success: ->
@@ -33,5 +35,15 @@ Dindin.Views.RecipeNew = Backbone.CompositeView.extend({
         Backbone.history.navigate('/recipes/' + recipe.id, { trigger: true })
         return
     })
+    return
+
+  handlePhoto: (event) ->
+    that = this
+    file = $(event.target)[0].files[0]
+    reader = new FileReader()
+    reader.onload = (e) ->
+      that.photoFile = e.target.result
+      return
+    reader.readAsDataURL(file)
     return
 })

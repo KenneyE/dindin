@@ -1,6 +1,7 @@
 <div class="text-center">
   <h1><%= recipe.escape('title') %></h1>
   <h6>Submitted by: <%= recipe.escape('author_name') %></h6>
+  <img src="<%= recipe.escape(image_url) %>" class="img img-responsive img-rounded">
   <p><%= recipe.escape('short_description') %></p>
   <hr>
 </div>

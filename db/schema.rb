@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521222725) do
+ActiveRecord::Schema.define(version: 20140523034755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,21 +28,29 @@ ActiveRecord::Schema.define(version: 20140521222725) do
   add_index "ingredient_uses", ["recipe_id"], name: "index_ingredient_uses_on_recipe_id", using: :btree
 
   create_table "ingredients", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "category",   null: false
+    t.string   "name",               null: false
+    t.string   "category",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true, using: :btree
 
   create_table "recipes", force: true do |t|
-    t.string   "title",             null: false
-    t.text     "body",              null: false
-    t.text     "short_description", null: false
-    t.integer  "author_id",         null: false
+    t.string   "title",              null: false
+    t.text     "body",               null: false
+    t.text     "short_description",  null: false
+    t.integer  "author_id",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "recipes", ["author_id"], name: "index_recipes_on_author_id", using: :btree

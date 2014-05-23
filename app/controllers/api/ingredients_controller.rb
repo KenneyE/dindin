@@ -24,7 +24,7 @@ module Api
     private
 
     def ingredient_params
-      params.require(:ingredient).permit(:name, :category, recipes: [])
+      params.require(:ingredient).permit(:name, :category, :image, recipes: [])
     end
   end
 end

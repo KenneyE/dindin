@@ -1,9 +1,12 @@
-<h1 class="text-center">New Recipe</h1>
+<h1>New Recipe</h1>
 <hr>
 <form id="new-recipe-form">
   <label for="recipe-title">Title</label>
   <input type="text" name="recipe[title]" id="recipe-title" 
     placeholder="What do you call your recipe?" class="form-control"><br>
+  <span class="btn btn-success btn-file">
+    Upload an Image<input type="file" multiple id="recipe-image" name="recipe[image]" class="form-control">
+  </span><br>
   <label for="recipe-description">Short Description</label>
   <textarea name="recipe[short_description]" 
     id="recipe-description" class="form-control" 

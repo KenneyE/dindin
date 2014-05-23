@@ -2,13 +2,17 @@
 #
 # Table name: recipes
 #
-#  id                :integer          not null, primary key
-#  title             :string(255)      not null
-#  body              :text             not null
-#  created_at        :datetime
-#  updated_at        :datetime
-#  author_id         :integer          not null
-#  short_description :text             not null
+#  id                 :integer          not null, primary key
+#  title              :string(255)      not null
+#  body               :text             not null
+#  short_description  :text             not null
+#  author_id          :integer          not null
+#  created_at         :datetime
+#  updated_at         :datetime
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class Recipe < ActiveRecord::Base
@@ -19,6 +23,9 @@ class Recipe < ActiveRecord::Base
   has_many :ingredient_uses
 
   has_many :ingredients, through: :ingredient_uses
+
+  has_attached_file :image, styles: { big: '600x600>', thumb: '50x50>'}
+  validates_attachment_content_type :image, content_type: %w(image/jpeg image/jpg image/gif image/png)
 
   def self.find_with_all_ingredients(ids)
     return Recipe.find_by_sql([<<-SQL, { ids: ids, num: ids.length }])

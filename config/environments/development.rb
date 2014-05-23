@@ -36,6 +36,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   #Use paperclip and AWS for image hosting
+  Paperclip.options[:command_path] = "/usr/bin/"
+  
   config.paperclip_defaults = {                                                                             
     :storage => :s3,                                              
     :s3_protocol => 'http',                                       
