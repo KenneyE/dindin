@@ -1,0 +1,20 @@
+<h1>Edit Recipe</h1>
+<hr>
+<form id="new-recipe-form">
+  <label for="recipe-title">Title</label>
+  <input type="text" name="recipe[title]" id="recipe-title"
+    value="<%= recipe.escape('title') %>" class="form-control"><br>
+  <span class="btn btn-success btn-file">
+    Upload an Image<input type="file" multiple id="recipe-image" name="recipe[image]" class="form-control">
+  </span><br>
+  <label for="recipe-description">Short Description</label>
+  <textarea name="recipe[short_description]"
+    id="recipe-description" class="form-control"
+    rows="4"><%= recipe.escape('short_description') %></textarea><br>
+  <div class="ingredient-selector-box"></div>
+  <br><label for="recipe-body">Instructions:</label>
+  <textarea name="recipe[body]"
+    id="recipe-description" class="form-control"
+    rows="8"><%= recipe.escape('body') %></textarea><br>
+    <input type="submit" value="Edit Recipe" class="btn btn-lg btn-primary pull-right">
+</form>

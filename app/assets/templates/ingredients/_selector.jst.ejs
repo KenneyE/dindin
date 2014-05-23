@@ -1,37 +1,29 @@
 <label>Selected Ingredients:</label>
-<div id="selected-ingredients"></div>
+<ul id="selected-ingredients"></ul>
 <label>Choose Ingredients:</label>
 <ul class="nav nav-pills" id="ingredient-tabs">
-  <li class="active"><a href="#Protein" data-category="#Protein" data-toggle="tab">Protein</a></li>
-  <li><a href="#Vegetables" data-category="#Vegetables" data-toggle="tab">Vegetables</a></li>
-  <li><a href="#Fruit" data-category="#Fruit" data-toggle="tab">Fruit</a></li>
-  <li><a href="#Dairy" data-category="#Dairy" data-toggle="tab">Dairy</a></li>
+  <li class="active"><a href="#Protein" data-category="Protein" data-toggle="tab">Protein</a></li>
+  <li><a href="#Vegetables" data-category="Vegetables" data-toggle="tab">Vegetables</a></li>
+  <li><a href="#Fruit" data-category="Fruit" data-toggle="tab">Fruit</a></li>
+  <li><a href="#Dairy" data-category="Dairy" data-toggle="tab">Dairy</a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane fade in active ingredient-pane" id="Protein">
     <br>
-    <% proteins.each(function(ingredient){ %>
-      <button class="btn btn-success ingredient-select" data-category="#<%= ingredient.escape('category') %>" data-id="<%= ingredient.id %>"><%= ingredient.escape('name') %></button>
-    <% }) %>
+    <ul class="Protein-list ingredient-list"></ul>
   </div>
   <div class="tab-pane fade ingredient-pane" id="Vegetables">
     <br>
-    <% vegetables.each(function(ingredient){ %>
-      <button class="btn btn-success ingredient-select" data-category="#<%= ingredient.escape('category') %>" data-id="<%= ingredient.id %>"><%= ingredient.escape('name') %></button>
-    <% }) %>
+    <ul class="Vegetables-list ingredient-list"></ul>
   </div>
   <div class="tab-pane fade ingredient-pane" id="Fruit">
     <br>
-    <% fruits.each(function(ingredient){ %>
-      <button class="btn btn-success ingredient-select" data-category="#<%= ingredient.escape('category') %>" data-id="<%= ingredient.id %>"><%= ingredient.escape('name') %></button>
-    <% }) %>
+    <ul class="Fruit-list ingredient-list"></ul>
   </div>
   <div class="tab-pane fade ingredient-pane" id="Dairy">
     <br>
-    <% dairy.each(function(ingredient){ %>
-      <button class="btn btn-success ingredient-select" data-category="#<%= ingredient.escape('category') %>" data-id="<%= ingredient.id %>"><%= ingredient.escape('name') %></button>
-    <% }) %>
+    <ul class="Dairy-list ingredient-list"></ul>
   </div>
 </div>

@@ -20,11 +20,13 @@ module Api
       render :index
     end
 
-    def new
-      @recipe = Recipe.new
-      @ingredients = Ingredient.all
-      @ingredient = Ingredient.new
-      render :new
+    def update
+      @recipe = Recipe.find(params[:id])
+      if @recipe.update_attributes(recipe_params)
+        render partial: "api/recipes/recipe", locals: { recipe: @recipe }
+      else
+        render @recipe.errors.full_messages
+      end
     end
 
     def show

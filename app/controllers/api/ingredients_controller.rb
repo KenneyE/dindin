@@ -3,7 +3,7 @@ module Api
     def create
       @ingredient = Ingredient.new(ingredient_params)
       if @ingredient.save
-        render partial: "api/ingedients/ingedient", 
+        render partial: "api/ingedients/ingredient", 
           locals: { ingedient: @ingredient }
       else
         render @ingredient.errors.full_messages

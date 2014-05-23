@@ -18,6 +18,7 @@
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $display-font: 'Pacifico', cursive;
 $main-color: #5A966E;
+$border-radius-base: 5px;
 $navbar-default-bg: darken($main-color, 10%);
 $navbar-default-color: white;
 $navbar-default-link-color: white;
@@ -60,7 +61,8 @@ body{
 .caption {
     position: relative;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: $border-radius-base;
+    text-shadow: 1px 1px 0 black;
 
     /* Only the -webkit- prefix is required these days */
     -webkit-transform: translateZ(0);
@@ -87,7 +89,7 @@ body{
     min-width: 100%;
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: $border-radius-base;
     border: 3px solid #BFA386;
 }
 
@@ -95,7 +97,7 @@ body{
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 13px;
+    bottom: 18px;
     left: 0;
     padding: 10px;
     color: white;
@@ -123,6 +125,25 @@ body{
 .caption:hover .caption__overlay__title {
     -webkit-transform: translateY(0);
             transform: translateY(0);
+}
+
+.ingredient-tile{
+  position: relative;
+  height: 125px;
+  width: 125px;
+  border-radius: $border-radius-base;
+  margin-right: 3px;
+  .ingredient-tile-name{
+    text-align: center;
+    color: white;
+    padding-top: 40px;
+    margin-top: 0;
+  }
+  .ingredient-tile-category{
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+  }
 }
 
 .recipe{
@@ -154,12 +175,29 @@ body{
 
 #selected-ingredients{
   border: thin solid #eee;
-  min-height: 50px;
+  min-height: 175px;
+  list-style: none;
+  padding-left: 0;
+  li{
+    display: inline-block;
+  }
+}
+
+.ingredient-list{
+  list-style: none;
+  padding-top: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+  li{
+    display: inline-block;
+    height: 125px;
+    padding-top: 0;
+  }
 }
 
 .ingredient-pane{
   border: thin solid #eee;
-  min-height: 50px;
+  min-height: 175px;
   border-radius: 5px;
   padding: 10px;
 }
