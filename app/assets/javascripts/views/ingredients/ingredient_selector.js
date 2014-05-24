@@ -1,37 +1,47 @@
 Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
   initialize: function(options){
     this.formElSelector = options.formElSelector;
-    Dindin.Collections.ingredients.fetch();
     this.collection = Dindin.Collections.ingredients;
-    this.collection.each(this.addIngredient.bind(this));
+    Dindin.Collections.ingredients.fetch();
     this.listenTo(this.collection, 'sync', this.render);
-    this.listenTo(this.collection, 'add', this.addIngredient);
   },
 
   addIngredient: function(ingredient){
     var ingredientTileView = new Dindin.Views.IngredientTile({
       model: ingredient
     });
-    var catSelector = '.' + ingredient.get('category') + '-list'
-
-    this.addSubview(catSelector, ingredientTileView);
+    this.addSubview('.ingredient-list', ingredientTileView);
     ingredientTileView.render();
   },
 
   events: {
-    'click #ingredient-tabs a': 'showTab',
     'click .ingredient-list li': 'selectIngredient',
     'click #selected-ingredients li': 'unSelectIngredient',
+    'keyup #ingredient-search': 'filterIngredients',
+  },
+
+  filterIngredients: function(event){
+    event.preventDefault();
+    this.removeSubviews();
+    var letters = $(event.currentTarget).val();
+    var matches = [];
+    matches = this.collection.search(letters);
+    matches.each(this.addIngredient.bind(this));
+    this.renderSubviews();
   },
 
   template: JST['ingredients/_selector'],
 
+  removeSubviews: function(){
+    _(this.subviews()['.ingredient-list']).each(function(subview){
+      subview.remove();
+    });
+    this.subviews()['.ingredient-list'] = [];
+  },
+
   render: function(){
     var renderedContent = this.template({
-      proteins: this.collection.byCategory('Protein'),
-      vegetables: this.collection.byCategory('Vegetables'),
-      fruits: this.collection.byCategory('Fruit'),
-      dairy: this.collection.byCategory('Dairy')
+      ingredients: this.collection
     })
 
     this.$el.html(renderedContent);
@@ -51,10 +61,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     event.preventDefault;
     var content = $(event.currentTarget);
     var id = content.data('id');
-    var category = content.data('category');
-    var selector = '.' + category + '-list';
-    $(selector).append(content);
-    $("a[data-category='" + category + "']").tab('show');
+    $('.ingredient-list').append(content);
     var $inputToRemove = $(this.formElSelector).find("input[value='" + id + "']");
     $inputToRemove.remove();
   },

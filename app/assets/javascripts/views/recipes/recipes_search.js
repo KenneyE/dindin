@@ -1,5 +1,6 @@
 Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   initialize: function(){
+    this.collection = new Dindin.Collections.Recipes();
     this.listenTo(this.collection, 'add', this.addRecipe);
     this.listenTo(this.collection, 'sync add', this.render);
     var ingredientSelector = new Dindin.Views.IngredientSelector({
@@ -10,6 +11,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   },
 
   addRecipe: function(recipe){
+    debugger
     var recipeTileView = new Dindin.Views.RecipeTile({
       model: recipe
     });
@@ -27,10 +29,9 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   template: JST['recipes/search'],
 
   render: function(){
-    renderedContent = this.template({
-      recipes: this.collection
-    })
+    renderedContent = this.template();
     this.$el.html(renderedContent);
+    // debugger
     this.renderSubviews();
     return this;
   },
@@ -38,9 +39,10 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   search: function(event){
     event.preventDefault();
     var formData = $(event.target).serializeJSON().recipe;
+    this.collection.reset();
     this.collection.fetch({
       data: $.param(formData),
-      reset: true,
+      add: true,
     });
   },
 })

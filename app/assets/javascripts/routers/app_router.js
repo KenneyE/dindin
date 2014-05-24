@@ -50,9 +50,7 @@ Dindin.Routers.AppRouter = Backbone.Router.extend({
   },
 
   recipesSearch: function(){
-    var recipesSearchView = new Dindin.Views.RecipesSearch({
-      collection: Dindin.Collections.recipes
-    });
+    var recipesSearchView = new Dindin.Views.RecipesSearch();
     this._swapView(recipesSearchView);
   },
 
