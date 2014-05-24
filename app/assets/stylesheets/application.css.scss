@@ -62,7 +62,7 @@ body{
     position: relative;
     overflow: hidden;
     border-radius: $border-radius-base;
-    text-shadow: 1px 1px 0 black;
+    text-shadow: 1px 1px 0 white;
 
     /* Only the -webkit- prefix is required these days */
     -webkit-transform: translateZ(0);
@@ -81,7 +81,7 @@ body{
 }
 
 .caption:hover::before {
-    background: rgba(0, 0, 0, .5);
+    background: rgba(255, 255, 255, .5);
 }
 
 .caption__media {
@@ -100,7 +100,7 @@ body{
     bottom: 18px;
     left: 0;
     padding: 10px;
-    color: white;
+    color: #333;
 
     -webkit-transform: translateY(100%);
             transform: translateY(100%);
@@ -115,6 +115,7 @@ body{
 }
 
 .caption__overlay__title {
+    font-weight: bold;
     -webkit-transform: translateY( -webkit-calc(-100% - 10px) );
             transform: translateY( calc(-100% - 10px) );
 
@@ -128,6 +129,7 @@ body{
 }
 
 .ingredient-tile{
+  display: none;
   position: relative;
   height: 125px;
   width: 125px;
@@ -173,7 +175,7 @@ body{
   min-height: 600px;
 }
 
-#selected-ingredients{
+.selected-ingredients{
   border: thin solid #eee;
   min-height: 175px;
   list-style: none;

@@ -15,6 +15,7 @@ gem 'backbone-on-rails'
 gem 'figaro'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
+gem 'jquery-ui-rails'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 

@@ -2,7 +2,9 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
   initialize: function(options){
     this.formElSelector = options.formElSelector;
     this.collection = Dindin.Collections.ingredients;
-    Dindin.Collections.ingredients.fetch();
+    this.collection.fetch();
+    this.collection.each(this.addIngredient.bind(this));
+    this.listenTo(this.collection, 'add', this.addIngredient)
     this.listenTo(this.collection, 'sync', this.render);
   },
 
@@ -15,8 +17,8 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
   },
 
   events: {
-    'click .ingredient-list li': 'selectIngredient',
-    'click #selected-ingredients li': 'unSelectIngredient',
+    'dblclick .ingredient-list li': 'selectIngredient',
+    'dblclick .selected-ingredients li': 'unSelectIngredient',
     'keyup #ingredient-search': 'filterIngredients',
   },
 
@@ -46,6 +48,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
     this.renderSubviews();
+    this.setSortable();
     return this;
   },
 
@@ -53,8 +56,15 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     event.preventDefault();
     var content = $(event.currentTarget);
     var id = content.data('id');
-    $('#selected-ingredients').append(content);
-    $(this.formElSelector).prepend("<input type='hidden' name='recipe[ingredient_ids][]' value='" + id + "'>");
+    $('.selected-ingredients').append(content);
+  },
+
+  setSortable: function(){
+    var that = this;
+    this.$el.find('.ing-sort').sortable({
+      axis: 'x,y',
+      connectWith: '.ing-sort',
+    })
   },
 
   unSelectIngredient: function(event){
@@ -62,12 +72,5 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     var content = $(event.currentTarget);
     var id = content.data('id');
     $('.ingredient-list').append(content);
-    var $inputToRemove = $(this.formElSelector).find("input[value='" + id + "']");
-    $inputToRemove.remove();
-  },
-
-  showTab: function(event){
-    event.preventDefault();
-    $(event.target).tab('show');
   },
 })

@@ -14,7 +14,7 @@
 #
 
 class Ingredient < ActiveRecord::Base
-  CATEGORIES = %w( Protein Vegetables Fruit Dairy )
+  CATEGORIES = %w( Protein Vegetables Fruit Dairy Grains )
 
   validates :name, :category, presence: true
   validates :name, uniqueness: true
