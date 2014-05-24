@@ -6,6 +6,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     this.collection.each(this.addIngredient.bind(this));
     this.listenTo(this.collection, 'add', this.addIngredient)
     this.listenTo(this.collection, 'sync', this.render);
+    this.selectedIds = [];
   },
 
   addIngredient: function(ingredient){
@@ -57,6 +58,8 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     var content = $(event.currentTarget);
     var id = content.data('id');
     $('.selected-ingredients').append(content);
+    this.selectedIds.push(id);
+    $('.selected-ingredients').trigger("ingredientSelected", { ids: this.selectedIds })
   },
 
   setSortable: function(){
@@ -72,5 +75,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     var content = $(event.currentTarget);
     var id = content.data('id');
     $('.ingredient-list').append(content);
+    var idIndex = this.selectedIds.indexOf(id);
+    this.selectedIds.splice(idIndex, 1);
   },
 })

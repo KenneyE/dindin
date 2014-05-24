@@ -1,28 +1,24 @@
 Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   initialize: function(){
     this.collection = new Dindin.Collections.Recipes();
-    this.listenTo(this.collection, 'add', this.addRecipe);
-    this.listenTo(this.collection, 'sync add', this.render);
     var ingredientSelector = new Dindin.Views.IngredientSelector({
       formElSelector: '#recipe-search-form'
     });
-    this.addSubview('.ingredient-selector-box', ingredientSelector);
-    this.collection.each(this.addRecipe.bind(this));
-  },
-
-  addRecipe: function(recipe){
-    var recipeTileView = new Dindin.Views.RecipeTile({
-      model: recipe
+    var recipeMatches = new Dindin.Views.RecipeMatches({
+      collection: this.collection
     });
-
-    this.addSubview('.recipe-list', recipeTileView);
-    recipeTileView.render();
+    this.addSubview('.recipe-matches', recipeMatches);
+    this.addSubview('.ingredient-selector-box', ingredientSelector);
   },
 
-  className: 'col-md-10 col-md-offset-1 recipe',
+  className: 'col-md-12 recipe',
 
   events: {
-    // 'submit #recipe-search-form': 'search',
+    'ingredientSelected .selected-ingredients': 'handleSelect'
+  },
+
+  handleSelect: function (event, data) {
+    this.searchByIds(data.ids);
   },
 
   template: JST['recipes/search'],
