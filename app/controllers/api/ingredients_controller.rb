@@ -11,7 +11,7 @@ module Api
     end
 
     def index
-      @ingredients = Ingredient.all
+      @ingredients = Ingredient.all.shuffle
       render :index
     end
 

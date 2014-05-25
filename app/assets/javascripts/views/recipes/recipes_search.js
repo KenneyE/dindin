@@ -1,14 +1,14 @@
 Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   initialize: function(){
     this.collection = new Dindin.Collections.SearchedRecipes();
-    var ingredientSelector = new Dindin.Views.IngredientSelector({
+    this.ingredientSelector = new Dindin.Views.IngredientSelector({
       formElSelector: '#recipe-search-form'
     });
     var recipeMatches = new Dindin.Views.RecipeMatches({
       collection: this.collection
     });
     this.addSubview('.recipe-matches', recipeMatches);
-    this.addSubview('.ingredient-selector-box', ingredientSelector);
+    this.addSubview('.ingredient-selector-box', this.ingredientSelector);
   },
 
   className: 'col-md-12 recipe',
@@ -36,9 +36,10 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
     this.$el.find('.ing-sort').sortable({
       axis: 'x,y',
       connectWith: '.ing-sort',
-      update: function(event){
+      update: function(event, ui){
         var ingredientIds = $('.selected-ingredients')
           .sortable('toArray', { attribute: 'data-id'} );
+        that.ingredientSelector.toggleSelected(ui.item);
         that.searchByIds(ingredientIds);
       },
     })

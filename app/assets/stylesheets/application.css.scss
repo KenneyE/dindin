@@ -177,11 +177,16 @@ body{
 
 .selected-ingredients{
   border: thin solid #eee;
-  max-height: 130px;
+  height: 130px;
   list-style: none;
+  padding-top: 0;
   padding-left: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  border-radius: 5px;
   li{
     display: inline-block;
+    padding-top: 0;
   }
 }
 

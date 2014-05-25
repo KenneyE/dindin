@@ -46,6 +46,14 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     return this;
   },
 
+  resetSearch: function(){
+    this.$el.find('#ingredient-search').val();
+    this.removeSubviews('.ingredient-list');
+    this.collection.reset(this.collection.shuffle(), {silent:true}); 
+    this.collection.each(this.addIngredient.bind(this));
+    this.renderSubviews();
+  },
+
   selectIngredient: function(event){
     event.preventDefault();
     var content = $(event.currentTarget);
@@ -61,6 +69,29 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
       axis: 'x,y',
       connectWith: '.ing-sort',
     })
+  },
+
+  toggleSelected: function(el){
+    var id = el.data('id');
+    if (!el.data('selected')) {
+      el.data('selected', true);
+      var selectedSubview = _.find(this.subviews()['.ingredient-list'], function(subview){ 
+        return subview.attributes()['data-id'] === id 
+      })
+      var subviewIndex = this.subviews()['.ingredient-list'].indexOf(selectedSubview)
+      this.subviews()['.ingredient-list'].splice(subviewIndex, 1)
+      this.addSubview('.selected-ingredients', selectedSubview);
+      this.selectedIds.push(id);
+      this.resetSearch();
+    } else {
+      el.data('selected', false);
+      var selectedSubview = _.find(this.subviews()['.selected-ingredients'], function(subview){ 
+        return subview.attributes()['data-id'] === id 
+      })
+      this.removeSubview('.selected-ingredients', selectedSubview);
+      var idIndex = this.selectedIds.indexOf(id);
+      this.selectedIds.splice(idIndex, 1);   
+    }
   },
 
   unSelectIngredient: function(event){

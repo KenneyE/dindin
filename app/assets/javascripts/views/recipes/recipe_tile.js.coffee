@@ -6,14 +6,18 @@ Dindin.Views.RecipeTile = Backbone.View.extend({
   },
 
   goToShowPage: (event) ->
+    that = this
     if this.model.id
       Backbone.history.navigate('/recipes/' + this.model.id, { trigger: true })
     else
-      this.model.save()
-      this.model.fetch({
+      this.model.save({}, {
         success: ->
-          Backbone.history.navigate('/recipes/' + this.model.id, { trigger: true })
+          that.model.fetch({
+            success: ->
+              Backbone.history.navigate('/recipes/' + this.model.id, { trigger: true })
+        })
       })
+
 
   render: ->
     renderedContent = this.template({
