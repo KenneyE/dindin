@@ -1,0 +1,1 @@
+json.array! @recipes, :id, :title, :ingredients, :small_image_url, :source_display_name, :yummly_id, :total_time_in_seconds 

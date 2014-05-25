@@ -23,7 +23,7 @@ class YummlySession
     p['matches'].each do |match|
       recipe = {
         title: match['recipeName'],
-        ingredients: match['ingredients'],
+        ingredients: match['ingredients'].join(','),
         small_image_url: match['smallImageUrls'][0],
         total_time_in_seconds: match['totalTimeInSeconds'],
         source_display_name: match['sourceDisplayName'],
@@ -32,7 +32,7 @@ class YummlySession
       }
       recipes << recipe
     end
-    
+
     recipes
   end
 
@@ -49,8 +49,8 @@ class YummlySession
 
     {
       title: p['name'],
-      atrribution: p['attribution'],
-      ingredients: p['ingredientLines'],
+      credit: p['attribution']['html'],
+      ingredients: p['ingredientLines'].join('|'),
       large_image_url: p['images'][0]['hostedLargeUrl'],
       small_image_url: p['images'][0]['hostedSmallUrl'],
       source_recipe_url: p['source']['sourceRecipeUrl'],
@@ -58,7 +58,7 @@ class YummlySession
       source_display_name: p['source']['sourceDisplayName'],
       yummly_id: p['id'],
       total_time: p['totalTime'],
-      total_time_in_seconds: p['totatTimeInSeconds']
+      total_time_in_seconds: p['totalTimeInSeconds']
     }
   end
 end

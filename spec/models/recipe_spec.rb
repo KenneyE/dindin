@@ -4,8 +4,6 @@
 #
 #  id                    :integer          not null, primary key
 #  title                 :string(255)      not null
-#  atrribution           :string(255)
-#  ingredients           :string(255)      not null
 #  large_image_url       :string(255)
 #  small_image_url       :string(255)      not null
 #  source_recipe_url     :string(255)
@@ -16,6 +14,8 @@
 #  total_time_in_seconds :string(255)
 #  created_at            :datetime
 #  updated_at            :datetime
+#  ingredients           :text
+#  credit                :string(255)
 #
 
 require 'spec_helper'

@@ -13,8 +13,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'backbone-on-rails'
 gem 'figaro'
-gem 'paperclip', github: 'thoughtbot/paperclip'
-gem 'aws-sdk'
 gem 'jquery-ui-rails'
 gem 'httparty'
 
