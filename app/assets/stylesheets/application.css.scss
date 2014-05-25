@@ -59,69 +59,69 @@ body{
 }
 
 .caption {
-    position: relative;
-    overflow: hidden;
-    border-radius: $border-radius-base;
-    text-shadow: 1px 1px 0 white;
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+  position: relative;
+  overflow: hidden;
+  border-radius: $border-radius-base;
+  text-shadow: 1px 1px 0 white;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
 }
 
 .caption::before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: transparent;
-    transition: background .35s ease-out;
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  transition: background .35s ease-out;
 }
 
 .caption:hover::before {
-    background: rgba(255, 255, 255, .5);
+  background: rgba(255, 255, 255, .5);
 }
 
 .caption__media {
-    display: block;
-    min-width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: $border-radius-base;
-    border: 3px solid #BFA386;
+  display: block;
+  width: 175px;
+  height: auto;
+  border-radius: $border-radius-base;
+  border: 3px solid #BFA386;
 }
 
 .caption__overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 18px;
-    left: 0;
-    padding: 10px;
-    color: #333;
-    -webkit-transform: translateY(100%);
-            transform: translateY(100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+  padding: 10px;
+  color: #333;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
 
-    transition: -webkit-transform .35s ease-out;
-    transition:         transform .35s ease-out;
+  transition: -webkit-transform .35s ease-out;
+  transition:         transform .35s ease-out;
 }
 
 .caption:hover .caption__overlay {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .caption__overlay__title {
-    font-weight: bold;
-    -webkit-transform: translateY( -webkit-calc(-100% - 10px) );
-            transform: translateY( calc(-100% - 10px) );
-    transition: -webkit-transform .35s ease-out;
-    transition:         transform .35s ease-out;
+  background: rgba(255, 255, 255, .25);
+  font-weight: bold;
+  -webkit-transform: translateY( -webkit-calc(-100% - 10px) );
+          transform: translateY( calc(-100% - 10px) );
+  transition: -webkit-transform .35s ease-out;
+  transition:         transform .35s ease-out;
 }
 
 .caption:hover .caption__overlay__title {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .ingredient-selector-box{

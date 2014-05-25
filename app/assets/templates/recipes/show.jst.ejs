@@ -1,24 +1,24 @@
 <div class="text-center">
   <h1><%= recipe.escape('title') %></h1>
-  <h6>Submitted by: <%= recipe.escape('author_name') %></h6>
-  <p><%= recipe.escape('short_description') %></p>
+  <h6>Recipe From: <a href="<%= recipe.escape('source_site_url') %>"><%= recipe.escape('source_display_name') %></a></h6>
+  <p>Total Prep Time: <%= recipe.escape('total_time') %></p>
   <hr>
 </div>
   <div class="col-md-4">
     <h3>Ingredients:</h3>
     <ul>
-      <% ingredients.each(function(ingredient) { %>
-        <li><%= ingredient.escape('name') %></li>
+      <% _(ingredients).each(function(ingredient) { %>
+        <li><%= ingredient %></li>
       <% }) %>
     </ul>
   </div>
   <div class="col-md-8">
-     <img src="<%= recipe.escape('image_url') %>" class="img img-responsive img-rounded recipe-image">
+     <img src="<%= recipe.escape('large_image_url') %>" class="img img-responsive img-rounded recipe-image">
   </div>
 <div class="col-md-12">
   <hr>
   <h3>Instructions:</h3>
-  <div><%= marked(recipe.escape('body')) %></div>
+  <div>Read instructions on <a href="<%= recipe.escape('source_recipe_url') %>" target="_blank">recipe provider's site</a></div>
   <hr>
-  <p text-center><a href="#/recipes/<%= recipe.id %>/edit">edit this recipe</a></p>
+  <%= recipe.get('credit') %>
 </div>

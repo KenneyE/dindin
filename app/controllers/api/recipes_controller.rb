@@ -1,7 +1,8 @@
 module Api
   class RecipesController < ApiController
     def create
-      @recipe = Recipe.new(recipe_params)
+      result = YummlySession.recipe(recipe_params[:yummly_id])
+      @recipe = Recipe.new(result)
       if @recipe.save
         render partial: "api/recipes/recipe", locals: { recipe: @recipe }
       else

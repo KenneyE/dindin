@@ -1,6 +1,6 @@
 Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   initialize: function(){
-    this.collection = new Dindin.Collections.Recipes();
+    this.collection = new Dindin.Collections.SearchedRecipes();
     var ingredientSelector = new Dindin.Views.IngredientSelector({
       formElSelector: '#recipe-search-form'
     });

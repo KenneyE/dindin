@@ -23,9 +23,6 @@ class Ingredient < ActiveRecord::Base
 
   has_many :recipes, through: :ingredient_uses
 
-  has_attached_file :image, styles: { big: '400x400>', thumb: '125x125>'}
-  validates_attachment_content_type :image, content_type: %w(image/jpeg image/jpg image/gif image/png)
-
   def self.categories
     CATEGORIES
   end
