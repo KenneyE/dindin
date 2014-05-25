@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
 gem 'bootstrap-sass'
 gem 'devise'
@@ -16,6 +16,7 @@ gem 'figaro'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
 gem 'jquery-ui-rails'
+gem 'httparty'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -27,7 +28,6 @@ group :development do
   gem 'annotate'
   gem 'debugger'
   gem 'letter_opener'
-  gem 'image_suckr'
 end
 
 group :test do

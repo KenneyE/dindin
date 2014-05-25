@@ -18,17 +18,8 @@
 #  updated_at            :datetime
 #
 
-# Read about fixtures at
-# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+require 'spec_helper'
 
-one:
-  title: MyString
-  body: MyText
-  short_description: MyText
-  author_id: 1
-
-two:
-  title: MyString
-  body: MyText
-  short_description: MyText
-  author_id: 1
+describe Recipe do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

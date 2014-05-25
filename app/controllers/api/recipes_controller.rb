@@ -34,6 +34,12 @@ module Api
       render partial: "api/recipes/recipe", locals: { recipe: @recipe }
     end
 
+    def search
+      @ingredients = params[:ingredient_ids].map { |id| Ingredient.find(id).name }
+      response = YummlySession.search(@ingredients)
+      render json: response
+    end
+
     private
 
     def recipe_params

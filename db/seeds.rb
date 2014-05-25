@@ -19,7 +19,7 @@ vegetables = { category: 'Vegetables',
                             onions bell\ peppers jalapeno\ peppers lettuce cabbage endive radicchio green\ onions chives
                             kale swiss\ chard mustard\ greens garlic beets radishes carrots peas cucumbers zucchini fava\ beans
                             shallots turnips rutabaga summer\ squash acorn\ squash artichoke avocado parsnips rhubarb sauerkraut
-                            kimchi)
+                            kimchi vegetable\ stock okra)
 }
 
 fruit = { category: 'Fruit',
@@ -32,7 +32,8 @@ protein = { category: 'Protein',
             ingredients: %w( chicken\ wings chicken\ legs chicken\ breast chicken\ thighs whole\ chicken steak pork pork\ chops
                          lamb lamb\ shanks tofu trout bass tuna salmon whole\ turkey flounder catfish rabbit duck goose ground\ beef 
                          filet\ mignon ribeye\ steaks t-bone\ steaks porterhouse\ steaks pork\ ribs pork\ shank beef\ cheeks turkey\ legs
-                         turkey\ breast bratwurst hot\ dogs keilbasa bacon prosciutto ham lamb\ sausage pork\ sausage )
+                         turkey\ breast bratwurst hot\ dogs keilbasa bacon prosciutto ham lamb\ sausage pork\ sausage pork\ belly 
+                         chicken\ stock pork\ stock fish\ stock beef\ stock)
 }
 
 dairy = { category: 'Dairy',

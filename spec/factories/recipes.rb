@@ -18,17 +18,9 @@
 #  updated_at            :datetime
 #
 
-# Read about fixtures at
-# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
-one:
-  title: MyString
-  body: MyText
-  short_description: MyText
-  author_id: 1
-
-two:
-  title: MyString
-  body: MyText
-  short_description: MyText
-  author_id: 1
+FactoryGirl.define do
+  factory :recipe do
+  end
+end

@@ -2,48 +2,21 @@
 #
 # Table name: recipes
 #
-#  id                 :integer          not null, primary key
-#  title              :string(255)      not null
-#  body               :text             not null
-#  short_description  :text             not null
-#  author_id          :integer          not null
-#  created_at         :datetime
-#  updated_at         :datetime
-#  image_file_name    :string(255)
-#  image_content_type :string(255)
-#  image_file_size    :integer
-#  image_updated_at   :datetime
+#  id                    :integer          not null, primary key
+#  title                 :string(255)      not null
+#  atrribution           :string(255)
+#  ingredients           :string(255)      not null
+#  large_image_url       :string(255)
+#  small_image_url       :string(255)      not null
+#  source_recipe_url     :string(255)
+#  source_site_url       :string(255)
+#  source_display_name   :string(255)      not null
+#  yummly_id             :string(255)      not null
+#  total_time            :string(255)
+#  total_time_in_seconds :string(255)
+#  created_at            :datetime
+#  updated_at            :datetime
 #
 
 class Recipe < ActiveRecord::Base
-  validates :title, :short_description, :body, :author, presence: true
-
-  belongs_to :author, class_name: 'User', foreign_key: :author_id
-
-  has_many :ingredient_uses, inverse_of: :recipe
-
-  has_many :ingredients, through: :ingredient_uses
-
-  has_attached_file :image, styles: { big: '400x400>', thumb: '175x175>'}
-  validates_attachment_content_type :image, content_type: %w(image/jpeg image/jpg image/gif image/png)
-
-  def self.find_with_all_ingredients(ids)
-    return Recipe.find_by_sql([<<-SQL, { ids: ids, num: ids.length }])
-      SELECT
-        recipes.*
-      FROM
-        recipes JOIN ingredient_uses
-        ON
-          recipes.id = ingredient_uses.recipe_id
-        JOIN ingredients
-        ON
-          ingredients.id = ingredient_uses.ingredient_id
-      WHERE
-        ingredients.id IN (:ids)
-      GROUP BY
-        recipes.id
-      HAVING
-        COUNT(ingredients.id) = :num;
-    SQL
-  end
 end

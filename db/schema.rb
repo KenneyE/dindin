@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140523155929) do
+ActiveRecord::Schema.define(version: 20140525095216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,19 +43,23 @@ ActiveRecord::Schema.define(version: 20140523155929) do
   add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true, using: :btree
 
   create_table "recipes", force: true do |t|
-    t.string   "title",              null: false
-    t.text     "body",               null: false
-    t.text     "short_description",  null: false
-    t.integer  "author_id",          null: false
+    t.string   "title",                 null: false
+    t.string   "atrribution"
+    t.string   "ingredients",           null: false
+    t.string   "large_image_url"
+    t.string   "small_image_url",       null: false
+    t.string   "source_recipe_url"
+    t.string   "source_site_url"
+    t.string   "source_display_name",   null: false
+    t.string   "yummly_id",             null: false
+    t.string   "total_time"
+    t.string   "total_time_in_seconds"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
-  add_index "recipes", ["author_id"], name: "index_recipes_on_author_id", using: :btree
+  add_index "recipes", ["title"], name: "index_recipes_on_title", unique: true, using: :btree
+  add_index "recipes", ["yummly_id"], name: "index_recipes_on_yummly_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
