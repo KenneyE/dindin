@@ -27,6 +27,7 @@ group :development do
   gem 'annotate'
   gem 'debugger'
   gem 'letter_opener'
+  gem 'image_suckr'
 end
 
 group :test do

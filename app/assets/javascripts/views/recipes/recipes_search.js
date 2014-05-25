@@ -45,15 +45,16 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   },
 
   searchByIds: function(ids){
-    var formData = {
-      'recipe': {
-        'ingredient_ids': ids,
-      },
-    }
     this.collection.reset();
-    this.collection.fetch({
-      data: $.param(formData),
-      add: true,
-    });
+    if (ids.length > 0) {
+      var formData = {
+        'ingredient_ids': ids,
+      }
+
+      this.collection.fetch({
+        data: $.param(formData),
+        add: true,
+      });
+    }
   },
 })

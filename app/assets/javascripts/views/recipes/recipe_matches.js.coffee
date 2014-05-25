@@ -1,5 +1,6 @@
 Dindin.Views.RecipeMatches = Backbone.CompositeView.extend({
   initialize: ->
+    this.listenTo(this.collection, 'reset', this.removeRecipes)
     this.listenTo(this.collection, 'add', this.addRecipe)
     this.listenTo(this.collection, 'sync add', this.render)
     this.collection.each(this.addRecipe.bind(this))
@@ -18,4 +19,7 @@ Dindin.Views.RecipeMatches = Backbone.CompositeView.extend({
     this.$el.html(renderedContent)
     this.renderSubviews()
     this
+
+  removeRecipes: ->
+    this.removeSubviews('.recipe-list')
 })

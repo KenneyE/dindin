@@ -25,7 +25,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
 
   filterIngredients: function(event){
     event.preventDefault();
-    this.removeSubviews();
+    this.removeSubviews('.ingredient-list');
     var letters = $(event.currentTarget).val();
     var matches = [];
     matches = this.collection.search(letters);
@@ -34,13 +34,6 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
   },
 
   template: JST['ingredients/_selector'],
-
-  removeSubviews: function(){
-    _(this.subviews()['.ingredient-list']).each(function(subview){
-      subview.remove();
-    });
-    this.subviews()['.ingredient-list'] = [];
-  },
 
   render: function(){
     var renderedContent = this.template({

@@ -63,8 +63,6 @@ body{
     overflow: hidden;
     border-radius: $border-radius-base;
     text-shadow: 1px 1px 0 white;
-
-    /* Only the -webkit- prefix is required these days */
     -webkit-transform: translateZ(0);
             transform: translateZ(0);
 }
@@ -101,7 +99,6 @@ body{
     left: 0;
     padding: 10px;
     color: #333;
-
     -webkit-transform: translateY(100%);
             transform: translateY(100%);
 
@@ -118,7 +115,6 @@ body{
     font-weight: bold;
     -webkit-transform: translateY( -webkit-calc(-100% - 10px) );
             transform: translateY( calc(-100% - 10px) );
-
     transition: -webkit-transform .35s ease-out;
     transition:         transform .35s ease-out;
 }
@@ -128,8 +124,11 @@ body{
             transform: translateY(0);
 }
 
+.ingredient-selector-box{
+  padding-left: 0;
+}
+
 .ingredient-tile{
-  display: none;
   position: relative;
   height: 125px;
   width: 125px;
@@ -178,7 +177,7 @@ body{
 
 .selected-ingredients{
   border: thin solid #eee;
-  min-height: 175px;
+  max-height: 130px;
   list-style: none;
   padding-left: 0;
   li{
@@ -192,11 +191,12 @@ body{
   padding-left: 0;
   margin-bottom: 0;
   border: thin solid #eee;
-  min-height: 175px;
+  height: 381px;
+  overflow: hidden;
   border-radius: 5px;
   li{
     display: inline-block;
-    height: 125px;
+    // height: 125px;
     padding-top: 0;
   }
 }
