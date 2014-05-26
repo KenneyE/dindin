@@ -31,6 +31,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   setSortable: ->
     this.$el.find('.ing-sort').sortable({
       axis: 'x,y',
+      cancel: '.no-drag',
       connectWith: '.ing-sort',
       update: (event, ui) =>
         ingredientIds = $('.selected-ingredients')

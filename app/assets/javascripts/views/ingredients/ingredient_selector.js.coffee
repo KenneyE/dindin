@@ -6,6 +6,10 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     this.collection.each(this.addIngredient.bind(this))
     this.listenTo(this.collection, 'add', this.addIngredient)
     this.listenTo(this.collection, 'sync', this.render)
+    newPrompt = new Dindin.Views.IngredientNew({
+        text: $('#ingredient-search').val()
+      })
+    this.addSubview('.modal-content', newPrompt)
     this.selectedIds = []
     return
 
@@ -20,7 +24,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     'dblclick .ingredient-list li': 'selectIngredient',
     'dblclick .selected-ingredients li': 'unSelectIngredient',
     'keyup #ingredient-search': 'filterIngredients',
-    # 'click button': 'openModal'
+    'click .input-group button': 'openModal'
   },
 
   filterIngredients: (event) ->
@@ -30,12 +34,14 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     matches = []
     matches = this.collection.search(letters)
     matches.each(this.addIngredient.bind(this))
-    this.toggleAddNew();
     this.renderSubviews()
+    this.toggleNewPrompt()
 
-  # openModal: ->
-  #   debugger
-  #   $('.new-ingredient-modal').modal('show')
+  openModal: (event) ->
+    event.preventDefault()
+    $('#new-ingredient-modal').modal('show')
+    $('input#ingredient-name').val($('#ingredient-search').val())
+    return
 
   template: JST['ingredients/_selector']
 
@@ -67,15 +73,14 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     this.$el.find('.ing-sort').sortable({
       axis: 'x,y',
       connectWith: '.ing-sort',
+      cancel: '.no-drag',
     })
 
-  toggleAddNew: ->
-    el = this.$el.find('#add-new-ingredient')
+  toggleNewPrompt: ->
     if this.subviews()['.ingredient-list'].length == 0
-      newPrompt = new Dindin.Views.IngredientNew({
-        text: $('#ingredient-search').val()
-      })
-      this.addSubview('.ingredient-list', newPrompt)
+      content = $('#ingredient-search').val()
+      $('.ingredient-list').append("<h5 class='no-drag'>No matched ingredients. 
+        Click 'add new ingredient' to add a new one.</h5>")
 
   toggleSelected: (el) ->
     id = el.data('id')

@@ -1,28 +1,20 @@
-<div class="modal fade" id="new-ingredient-modal" tabindex="-1" role="dialog" aria-labelledby="AddIngredientModal" aria-hidden="true" aria-describedby="add new ingredient box">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content recipe">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">New Ingredient</h4>
-      </div>
-      <form id="new-ingredient-form">
-        <label for="ingredient-name">Name:</label>
-        <input type="text" name="ingredient[name]" id="ingredient-name" value="<%= text %>" class="form-control"><br>
-        <label for="ingredient-category">Category:</label>
-        <select class="form-control" name="ingredient[category]">
-          <option class="btn-danger" value="Protein">Protein</option>
-          <option class="btn-success" value="Vegetables">Vegetables</option>
-          <option class="btn-primary" value="Fruit">Fruit</option>
-          <option class="btn-warning" value="Grains & Legumes">Grains & Legumes</option>
-          <option class="btn-info" value="Dairy">Dairy</option>
-          <option class="btn-other" value="Other">Other</option>
-        </select>
-      <div class="modal-footer">
-          <input type="submit" value="Create Ingredient" class="btn btn-primary pull-right">
-        </form>
-      </div>
-    </div>
-  </div>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title">New Ingredient</h4>
 </div>
-
-<li><li>No ingredient matching <%= text %> could be found. <button class="btn btn-link" data-toggle="modal" data-target="#new-ingredient-modal">Click here to add it.</button></li>
+<form id="new-ingredient-form">
+  <label for="ingredient-name">Name:</label>
+  <input type="text" name="ingredient[name]" id="ingredient-name" value="<%= text %>" class="form-control"><br>
+  <label for="ingredient-category">Category:</label>
+  <select class="form-control" name="ingredient[category]">
+    <option class="btn-danger" value="Protein">Protein</option>
+    <option class="btn-success" value="Vegetables">Vegetables</option>
+    <option class="btn-primary" value="Fruit">Fruit</option>
+    <option class="btn-warning" value="Grains & Legumes">Grains & Legumes</option>
+    <option class="btn-info" value="Dairy">Dairy</option>
+    <option class="btn-other" value="Other">Other</option>
+  </select>
+<div class="modal-footer">
+    <input type="submit" value="Create Ingredient" class="btn btn-primary pull-right">
+  </form>
+</div>

@@ -28,6 +28,10 @@ body{
   background-color: $main-color;
 }
 
+h1, h2 {
+  line-height: 90%;
+}
+
 .navbar-brand{
   font-family: $display-font;
   text-shadow: 1px 1px 0 #666;
@@ -209,4 +213,8 @@ body{
 
 .btn-other {
   @include button-variant(white, #844A9E, $btn-default-border);
+}
+
+.btn-link {
+  font-family: $font-family-sans-serif;
 }
