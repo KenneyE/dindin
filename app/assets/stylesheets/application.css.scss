@@ -22,6 +22,7 @@ $border-radius-base: 5px;
 $navbar-default-bg: darken($main-color, 10%);
 $navbar-default-color: white;
 $navbar-default-link-color: white;
+$navbar-default-link-hover-color: #f0ad4e;
 @import "bootstrap";
 
 body{
@@ -40,26 +41,6 @@ h1, h2 {
 
 .btn {
   font-family: $display-font;
-}
-
-.btn-file {
-  position: relative;
-  overflow: hidden;
-  input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 999px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-  }
 }
 
 .caption {
@@ -89,10 +70,12 @@ h1, h2 {
 
 .caption__media {
   display: block;
-  width: 175px;
+  width: 215px;
   height: auto;
   border-radius: $border-radius-base;
   border: 3px solid #BFA386;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
 }
 
 .caption__overlay {
@@ -131,16 +114,13 @@ h1, h2 {
 
 .ingredient-list{
   list-style: none;
-  padding-top: 0;
-  padding-left: 0;
+  padding: 15px 10px 15px;
   margin-bottom: 0;
-  border: thin solid #eee;
-  height: 381px;
+  height: 410px;
   overflow: hidden;
   border-radius: 5px;
   li{
     display: inline-block;
-    // height: 125px;
     padding-top: 0;
   }
 }
@@ -155,7 +135,9 @@ h1, h2 {
   width: 125px;
   border-radius: $border-radius-base;
   margin-right: 3px;
+  overflow: hidden;
   .ingredient-tile-name{
+    text-align: left;
     position: absolute;
     color: white;
     bottom: 30px;
@@ -184,6 +166,7 @@ h1, h2 {
 
 .recipe-list{
   list-style: none;
+  text-align: center;
   min-height: 200px;
   padding-left: 0;
   li{
@@ -198,10 +181,9 @@ h1, h2 {
 
 .selected-ingredients{
   border: thin solid #eee;
-  height: 130px;
+  height: 155px;
   list-style: none;
-  padding-top: 0;
-  padding-left: 0;
+  padding: 15px 10px 15px;
   margin-bottom: 0;
   overflow: hidden;
   border-radius: 5px;
