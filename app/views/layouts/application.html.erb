@@ -7,45 +7,70 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a href="<%= root_url %>" class="navbar-brand">din din</a>
-        <ul class="nav navbar-nav">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      <ul class="nav navbar-nav">
+        <li>
+          <button class="btn navbar-btn btn-success menu-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </li>
+      </ul>
+        <a href="<%= root_url %>" class="navbar-brand">din din</a>
+          <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li><a href="#">Hello, <%= current_user.username %></a></li>
+          <% end %>
+            <li><a href="#">Search for Recipes</a></li>
+            <li><a href="#/ingredients">Find Ingredients</a></li>
+            <li><a href="#/recipes">All Recipes</a></li>
+          </ul>
+      </div>
+
+        <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
-          <li><a href="#">Hello, <%= current_user.username %></a></li>
+          <li><%= button_to "Log out", destroy_user_session_url, method: :delete, class: "btn btn-warning navbar-btn" %></li>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_url %></li>
+          <li><%= button_to "Sign in", new_user_session_url, method: :get, class: "btn btn-primary navbar-btn" %></li>
         <% end %>
-          <li><a href="#">Search for Recipes</a></li>
-          <li><a href="#/ingredients">Find Ingredients</a></li>
-          <li><a href="#/recipes">All Recipes</a></li>
         </ul>
     </div>
+  </nav>
 
-      <ul class="nav navbar-nav pull-right">
-      <% if user_signed_in? %>
-        <li><%= button_to "Log out", destroy_user_session_url, method: :delete, class: "btn btn-warning navbar-btn" %></li>
-      <% else %>
-        <li><%= link_to "Sign up", new_user_registration_url %></li>
-        <li><%= button_to "Sign in", new_user_session_url, method: :get, class: "btn btn-primary navbar-btn" %></li>
-      <% end %>
-      </ul>
-  </div>
-</nav>
+  <div id="site-wrapper">
+    <div id="site-canvas">
+      <div id="user-menu">
+        <div id="menu-edge">
+        </div>
+        <ul class="nav nav-stacked">
+          <button type="button" class="close menu-toggle">&times;</button>
+          <h2>The Fridge</h2>
+          <hr>
+          <h4>Your Ingredients:</h4>
+          <ul class="sortable well ing-sort" id="fridge-ingredients"></ul>
+  <!--         <h4>Your Favorite Recipes:</h4> -->
+        </ul>
+      </div>  <!-- /user-menu -->
 
-<div class="container">
-  <% if notice %>
-    <div class="alert alert-success"><%= notice %></div>
-  <% end %>
-  <% if alert %>
-    <div class="alert alert-warning"><%= alert %></div>
-  <% end %>
-  <% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-      <div class="alert-alert-warning"><%= error %></div>
-    <% end %>
-  <% end %>
-  <%= yield %>
-</div> <!-- /.container -->
-
+      <div class="container">
+        <% if notice %>
+          <div class="alert alert-success"><%= notice %></div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-warning"><%= alert %></div>
+        <% end %>
+        <% if flash[:errors] %>
+          <% flash[:errors].each do |error| %>
+            <div class="alert-alert-warning"><%= error %></div>
+          <% end %>
+        <% end %>
+        <%= yield %>
+      </div> <!-- /.container -->
+    </div> <!-- /#site-canvas -->
+  </div> <!-- /#site-wrapper -->
 </body>
 </html>

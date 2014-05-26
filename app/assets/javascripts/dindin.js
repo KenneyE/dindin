@@ -11,7 +11,26 @@ window.Dindin = {
 
 $(document).ready(function() {
   Dindin.initialize();
+
+  $('.menu-toggle').click(function() {
+    toggleNav();
+  });
+
+  $('#fridge-ingredients').sortable({
+    axis: 'x,y',
+    connectWith: '.ing-sort',
+    cancel: '.no-drag',
+  })
 });
+
+
+function toggleNav() {
+  if ($('#site-wrapper').hasClass('show-nav')) {
+    $('#site-wrapper').removeClass('show-nav');
+  } else {
+    $('#site-wrapper').addClass('show-nav');
+  }
+}
 
 Backbone.CompositeView = Backbone.View.extend({
   addSubview: function (selector, subview){

@@ -27,13 +27,89 @@ $navbar-default-link-hover-color: #f0ad4e;
 
 body{
   background-color: $main-color;
+  padding-bottom: 30px;
 }
 
 h1, h2 {
   line-height: 90%;
 }
 
+#site-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%
+}
+
+#site-canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition: .3s ease all;
+    transition: .3s ease all;
+}
+
+#user-menu {
+  width: 355px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -320px;
+  background: #bbb;
+  color: white;
+  padding-left: 15px;
+  padding-right: 50px;
+  border-top: 8px solid $navbar-default-bg;
+  border-bottom: 8px solid $navbar-default-bg;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  h1, h2{
+    font-family: $display-font;
+  }
+  .well {
+    background-color: #888;
+  }
+}
+
+#menu-edge{
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 35px;
+  background-color: $navbar-default-bg;
+}
+
+.icon-bar {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:4px;
+  display: block;
+  width: 22px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+#site-wrapper.show-nav #site-canvas {
+    -webkit-transform: translateX(320px);
+    transform: translateX(320px);
+}
+
+#fridge-ingredients {
+  min-height: 400px;
+  // width: 290px;
+  list-style: none;
+  padding-left: 10px;
+  li {
+    display: inline-block;
+    padding-top: 0;
+  }
+}
+
 .navbar-brand{
+  padding-left: 30px;
   font-family: $display-font;
   text-shadow: 1px 1px 0 #666;
   font-size: 36px;
@@ -74,8 +150,6 @@ h1, h2 {
   height: auto;
   border-radius: $border-radius-base;
   border: 3px solid #BFA386;
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
 }
 
 .caption__overlay {
@@ -110,6 +184,11 @@ h1, h2 {
 .caption:hover .caption__overlay__title {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.credit{
+  // position: absolute;
+  // bottom: 10px;
 }
 
 .ingredient-list{

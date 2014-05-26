@@ -9,7 +9,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     newPrompt = new Dindin.Views.IngredientNew({
         text: $('#ingredient-search').val()
       })
-    this.addSubview('.modal-content', newPrompt)
+    $('body').prepend(newPrompt.render().$el)
     this.selectedIds = []
     return
 
