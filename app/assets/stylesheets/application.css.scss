@@ -59,6 +59,7 @@ body{
 }
 
 .caption {
+  cursor: pointer;
   position: relative;
   overflow: hidden;
   border-radius: $border-radius-base;
@@ -122,6 +123,22 @@ body{
 .caption:hover .caption__overlay__title {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.ingredient-list{
+  list-style: none;
+  padding-top: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+  border: thin solid #eee;
+  height: 381px;
+  overflow: hidden;
+  border-radius: 5px;
+  li{
+    display: inline-block;
+    // height: 125px;
+    padding-top: 0;
+  }
 }
 
 .ingredient-selector-box{
@@ -190,18 +207,6 @@ body{
   }
 }
 
-.ingredient-list{
-  list-style: none;
-  padding-top: 0;
-  padding-left: 0;
-  margin-bottom: 0;
-  border: thin solid #eee;
-  height: 381px;
-  overflow: hidden;
-  border-radius: 5px;
-  li{
-    display: inline-block;
-    // height: 125px;
-    padding-top: 0;
-  }
+.btn-other {
+  @include button-variant(white, #844A9E, $btn-default-border);
 }

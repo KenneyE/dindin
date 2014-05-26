@@ -3,8 +3,8 @@ module Api
     def create
       @ingredient = Ingredient.new(ingredient_params)
       if @ingredient.save
-        render partial: "api/ingedients/ingredient", 
-          locals: { ingedient: @ingredient }
+        render partial: "api/ingredients/ingredient", 
+          locals: { ingredient: @ingredient }
       else
         render @ingredient.errors.full_messages
       end
@@ -17,8 +17,8 @@ module Api
 
     def show
       @ingredient = Ingredient.find(params[:id])
-      @recipes = @ingredient.recipes
-      render :show
+      render partial: "api/ingredients/ingredient", 
+        locals: { ingredient: @ingredient }
     end
 
     private

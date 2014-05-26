@@ -12,12 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery.ui.sortable
 //= require underscore
 //= require backbone
 //= require bootstrap
-//= require marked
-//= require dropzone
 //= require serializeJSON
 //= require dindin
 //= require_tree ../templates

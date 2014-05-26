@@ -1,25 +1,30 @@
 Dindin.Views.IngredientNew = Backbone.View.extend({
+  initialize: (options) ->
+    this.text = options.text
+    return
 
   addIngredient: (event) ->
     event.preventDefault()
+    $modal = $('#new-ingredient-modal')
     formData = $(event.target).serializeJSON()
     ingredient = new Dindin.Models.Ingredient(formData)
-    ingredient.save({}, {
-      success: ->
-        Dindin.Collections.ingredients.add(ingredient)
-        # Backbone.history.navigate('/ingredients/' + ingredient.id, { trigger: true })
-        return
-    })
+    $modal.on('hidden.bs.modal', (e) ->
+      ingredient.save({}, {
+        success: ->
+          ingredient.fetch()
+          Dindin.Collections.ingredients.add(ingredient)
+          return
+      }))
+    $modal.modal('hide');
     return
 
   events: {
     'submit #new-ingredient-form': 'addIngredient'
-    'change #ingredient-image': 'handlePhoto'
   }
 
   render: ->
     renderedContent = this.template({
-      ingredient: this.model
+      text: this.text
     })
     this.$el.html(renderedContent)
     this

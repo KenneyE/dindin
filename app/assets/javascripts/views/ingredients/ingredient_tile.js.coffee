@@ -1,4 +1,7 @@
 Dindin.Views.IngredientTile = Backbone.View.extend({
+  initialize: ->
+    this.listenTo(this.model, 'sync', this.render)
+
   attributes: ->
     {
       'data-id': this.model.id,
@@ -12,7 +15,8 @@ Dindin.Views.IngredientTile = Backbone.View.extend({
       when category == 'Vegetables' then 'btn-success'
       when category == 'Fruit' then 'btn-primary'
       when category == 'Grains & Legumes' then 'btn-warning'
-      else 'btn-info'
+      when category == 'Dairy' then 'btn-info'
+      else 'btn-other'
     color
 
   tagName: 'li'
