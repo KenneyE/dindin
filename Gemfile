@@ -15,6 +15,7 @@ gem 'backbone-on-rails'
 gem 'figaro'
 gem 'jquery-ui-rails'
 gem 'httparty'
+gem 'newrelic_rpm'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 

@@ -7,6 +7,7 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     return
 
   addIngredient: (ingredient) ->
+    debugger
     ingredientTileView = new Dindin.Views.IngredientTile({
       model: ingredient
     })
@@ -42,7 +43,6 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     this.model.ingredients().add(newIngredient)
     ingredientIds = this.model.ingredients().map (ingredient) ->
       ingredient.get('id')
-    this.model.fetch()
     this.model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true })
     return
 })

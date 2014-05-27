@@ -131,6 +131,7 @@ GEM
       railties (~> 4.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    newrelic_rpm (3.8.1.221)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -242,6 +243,7 @@ DEPENDENCIES
   jquery-ui-rails
   letter_opener
   minitest-rails
+  newrelic_rpm
   pg
   pry-rails
   rails (= 4.1.0)
