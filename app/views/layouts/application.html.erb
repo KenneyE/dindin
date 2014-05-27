@@ -50,19 +50,12 @@
           <button type="button" class="close menu-toggle">&times;</button>
           <h2>The Fridge</h2>
           <hr>
-          <h4>Your Ingredients:</h4>
-          <ul class="sortable well ing-sort" id="fridge-ingredients"></ul>
+          <div id="fridge-box"></div>
   <!--         <h4>Your Favorite Recipes:</h4> -->
         </ul>
       </div>  <!-- /user-menu -->
 
       <div class="container">
-        <% if notice %>
-          <div class="alert alert-success"><%= notice %></div>
-        <% end %>
-        <% if alert %>
-          <div class="alert alert-warning"><%= alert %></div>
-        <% end %>
         <% if flash[:errors] %>
           <% flash[:errors].each do |error| %>
             <div class="alert-alert-warning"><%= error %></div>

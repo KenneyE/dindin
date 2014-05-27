@@ -1,14 +1,22 @@
 module Api
   class UsersController < ApiController
     def show
-      @user = User.find(params[:id])
+      @user = current_user ? current_user : User.new
+      render :show
+    end
+
+    def update
+      if current_user
+        @user = current_user
+        @user.update_attributes(user_params)
+      end
       render :show
     end
 
     private
 
     def user_params
-      params.require(:user).permit(:ingredient_ids[])
+      params.require(:user).permit(:saved_ingredient_ids[])
     end
   end
 end

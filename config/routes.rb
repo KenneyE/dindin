@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
 
   namespace :api, default: { format: :json } do
-    resources :users, only: [:show, :update]
+    resource :user, only: [:show, :update]
     resources :recipes do
       collection do
         get 'search'
