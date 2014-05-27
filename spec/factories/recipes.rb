@@ -15,7 +15,7 @@
 #  created_at            :datetime
 #  updated_at            :datetime
 #  ingredients           :text
-#  credit                :string(255)
+#  credit                :text
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

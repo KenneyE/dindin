@@ -2,15 +2,11 @@
 #
 # Table name: ingredients
 #
-#  id                 :integer          not null, primary key
-#  name               :string(255)      not null
-#  category           :string(255)      not null
-#  created_at         :datetime
-#  updated_at         :datetime
-#  image_file_name    :string(255)
-#  image_content_type :string(255)
-#  image_file_size    :integer
-#  image_updated_at   :datetime
+#  id         :integer          not null, primary key
+#  name       :string(255)      not null
+#  category   :string(255)      not null
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Ingredient < ActiveRecord::Base
@@ -19,9 +15,9 @@ class Ingredient < ActiveRecord::Base
   validates :name, :category, presence: true
   validates :name, uniqueness: true
 
-  has_many :ingredient_uses
+  has_many :ingredient_saves, class_name: 'IngredientSave'
 
-  has_many :recipes, through: :ingredient_uses
+  has_many :users, through: :ingredient_saves, source: :user
 
   def self.categories
     CATEGORIES

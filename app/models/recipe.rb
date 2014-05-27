@@ -15,7 +15,7 @@
 #  created_at            :datetime
 #  updated_at            :datetime
 #  ingredients           :text
-#  credit                :string(255)
+#  credit                :text
 #
 
 class Recipe < ActiveRecord::Base
