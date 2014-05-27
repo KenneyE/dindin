@@ -10,26 +10,32 @@
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-      <ul class="nav navbar-nav">
-        <li>
-          <button class="btn navbar-btn btn-link menu-toggle">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </li>
-      </ul>
+        <ul class="nav navbar-nav pull-left" id="fridge-toggle">
+          <li>
+            <button class="btn navbar-btn btn-link menu-toggle">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </li>
+        </ul>
         <a href="<%= root_url %>" class="navbar-brand">din din</a>
-          <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-            <li><a href="#">Hello, <%= current_user.username %></a></li>
-          <% end %>
-            <li><a href="#">Search for Recipes</a></li>
-            <li><a href="#/ingredients">Find Ingredients</a></li>
-            <li><a href="#/recipes">All Recipes</a></li>
-          </ul>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
-
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
+          <li><a href="#">Hello, <%= current_user.username %></a></li>
+        <% end %>
+          <li><a href="#">Search for Recipes</a></li>
+          <li><a href="#/ingredients">Find Ingredients</a></li>
+          <li><a href="#/recipes">All Recipes</a></li>
+        </ul>
         <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
           <li><%= button_to "Log out", destroy_user_session_url, method: :delete, class: "btn btn-warning navbar-btn" %></li>
@@ -38,6 +44,7 @@
           <li><%= button_to "Sign in", new_user_session_url, method: :get, class: "btn btn-primary navbar-btn" %></li>
         <% end %>
         </ul>
+      </div>
     </div>
   </nav>
 
@@ -45,6 +52,7 @@
     <div id="site-canvas">
       <div id="user-menu">
         <div id="menu-edge">
+          <a href="#" class="menu-toggle"><h3>Click here to open the fridge</h3></a>
         </div>
         <ul class="nav nav-stacked">
           <button type="button" class="close menu-toggle">&times;</button>

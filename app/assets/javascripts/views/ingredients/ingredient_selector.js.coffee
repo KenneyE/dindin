@@ -73,9 +73,8 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
   selectIngredient: (event) ->
     event.preventDefault()
     content = $(event.currentTarget)
-    id = content.data('id')
-    $('.selected-ingredients').append(content)
-    this.selectedIds.push(id)
+    $('.selected-ingredients').prepend(content)
+    this.toggleSelected(content)
     $('.selected-ingredients').trigger("ingredientSelected", { ids: this.selectedIds })
 
   setSortable: ->
@@ -112,10 +111,8 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
       this.removeSubviewByDataId(id, '.selected-ingredients')
 
   unSelectIngredient: (event) ->
-    event.preventDefault
+    event.preventDefault()
     content = $(event.currentTarget)
-    id = content.data('id')
-    $('.ingredient-list').append(content)
-    idIndex = this.selectedIds.indexOf(id)
-    this.selectedIds.splice(idIndex, 1)
+    $('.ingredient-list').prepend(content)
+    this.toggleSelected(content)
 })

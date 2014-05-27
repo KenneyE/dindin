@@ -19,6 +19,7 @@ window.Dindin = {
 $ ->
   Dindin.initialize()
   $('.menu-toggle').click ->
+    event.preventDefault()
     toggleNav()
 
   $('#fridge-ingredients').sortable {
