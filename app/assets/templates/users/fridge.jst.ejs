@@ -1,2 +1,6 @@
 <h4><%= user.escape('username') %>'s ingredients:</h4>
-<ul class="sortable well ing-sort" id="fridge-ingredients"></ul>
+<ul class="sortable well ing-sort" id="fridge-ingredients">
+  <% if(user.escape('username') === 'Guest'){ %>
+    <li class="text-center"><h4>You need to be logged in to store ingredients. <a href="/users/sign_up/">Click here</a> to sign up.</h4></li>
+  <% } %>
+</ul>
