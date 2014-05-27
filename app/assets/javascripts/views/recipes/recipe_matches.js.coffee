@@ -25,8 +25,8 @@ Dindin.Views.RecipeMatches = Backbone.CompositeView.extend({
     this.removeSubviews('.recipe-list')
 
   toggleEmptyPrompt: ->
-    if $.isEmptyObject(this.subviews())
-      this.$el.find('.recipe-list').append("<h5 class='text-center'>No recipes currently found. 
-        Drag and drop ingredients into the selector to search for new recipes.</h5>")
+    if $.isEmptyObject(this.subviews()) || this.subviews()['.recipe-list'].length == 0
+      this.$el.find('.recipe-list').append("<h4 class='text-center placeholder'>No recipes currently found. 
+        Try adding or removing ingredients from the selector to discover new recipes.</h4>")
     return
 })

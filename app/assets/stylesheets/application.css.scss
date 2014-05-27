@@ -27,11 +27,13 @@ $navbar-default-link-hover-color: #f0ad4e;
 
 body{
   background-color: $main-color;
+  padding-top: 65px;
   padding-bottom: 30px;
 }
 
 h1, h2 {
   line-height: 90%;
+  margin-top: 5px;
 }
 
 #site-wrapper {
@@ -123,10 +125,6 @@ h1, h2 {
   }
 }
 
-.navbar{
-  margin-bottom: 10px;
-}
-
 .navbar-brand{
   padding-left: 30px;
   font-family: $display-font;
@@ -214,7 +212,7 @@ h1, h2 {
   list-style: none;
   padding: 15px 10px 15px;
   margin-bottom: 0;
-  height: 410px;
+  height: 540px;
   overflow: hidden;
   border-radius: 5px;
   li{
@@ -249,12 +247,16 @@ h1, h2 {
   }
 }
 
+.placeholder {
+  color: #bbb;
+}
+
 .recipe{
   background-color: white;
   border: 3px solid #eee;
   border-radius: 5px;
   padding: 10px;
-  h1{
+  h1, h2{
     text-align: center;
   }
 }
@@ -266,8 +268,9 @@ h1, h2 {
 .recipe-list{
   list-style: none;
   text-align: center;
-  min-height: 200px;
+  height: 350px;
   padding-left: 0;
+  overflow-y: auto;
   li{
     display: inline-block;
     padding: 15px;
