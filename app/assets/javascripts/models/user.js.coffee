@@ -1,5 +1,5 @@
 Dindin.Models.User = Backbone.Model.extend({
-  urlRoot: 'api/user'
+  url: 'api/user'
 
 ingredients: ->
     this._ingredients = this._ingredients ||

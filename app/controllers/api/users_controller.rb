@@ -6,7 +6,7 @@ module Api
     end
 
     def update
-      if current_user
+      if user_signed_in?
         @user = current_user
         @user.update_attributes(user_params)
       end
@@ -16,7 +16,7 @@ module Api
     private
 
     def user_params
-      params.require(:user).permit(:saved_ingredient_ids[])
+      params.require(:user).permit(saved_ingredient_ids: [])
     end
   end
 end

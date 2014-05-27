@@ -16,9 +16,9 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
   addIngredient: (ingredient) ->
     ingredientTileView = new Dindin.Views.IngredientTile({
       model: ingredient
-    });
-    this.addSubview('.ingredient-list', ingredientTileView);
-    ingredientTileView.render();
+    })
+    this.addSubview('.ingredient-list', ingredientTileView)
+    ingredientTileView.render()
 
   events: {
     'dblclick .ingredient-list li': 'selectIngredient',
@@ -44,6 +44,15 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
     return
 
   template: JST['ingredients/_selector']
+
+  removeSubviewByDataId: (id, selector) ->
+    selectedSubview = _.find(this.subviews()[selector], (subview) -> 
+      return subview.attributes()['data-id'] == id 
+      )
+    this.removeSubview(selector, selectedSubview);
+    idIndex = this.selectedIds.indexOf(id)
+    this.selectedIds.splice(idIndex, 1)
+
 
   render: ->
     renderedContent = this.template({
@@ -74,6 +83,10 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
       axis: 'x,y',
       connectWith: '.ing-sort',
       cancel: '.no-drag',
+      remove: (event, ui) =>
+        if $(ui.item).parent().attr('id') == "fridge-ingredients"
+          id = ui.item.data('id')
+          @removeSubviewByDataId(id, '.ingredient-list')
     })
 
   toggleNewPrompt: ->
@@ -96,12 +109,7 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
       this.resetSearch();
     else 
       el.data('selected', false);
-      selectedSubview = _.find(this.subviews()['.selected-ingredients'], (subview) -> 
-        return subview.attributes()['data-id'] == id 
-      )
-      this.removeSubview('.selected-ingredients', selectedSubview);
-      idIndex = this.selectedIds.indexOf(id)
-      this.selectedIds.splice(idIndex, 1)
+      this.removeSubviewByDataId(id, '.selected-ingredients')
 
   unSelectIngredient: (event) ->
     event.preventDefault
