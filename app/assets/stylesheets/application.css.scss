@@ -37,6 +37,13 @@ h1, h2 {
   margin-top: 5px;
 }
 
+#fridge-image{
+  padding: 0;
+  img {
+    height: 35px;
+  }
+}
+
 #fridge-toggle {
   display: inline-block;
 }
