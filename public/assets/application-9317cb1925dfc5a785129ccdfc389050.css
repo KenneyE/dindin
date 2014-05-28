@@ -13,7 +13,22 @@
 
 
  */
-@import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
+@font-face {
+  font-family: 'Pacifico';
+  src: url(/assets/pacifico-webfont.eot);
+  /* IE9 Compat Modes */
+  src: url(/assets/pacifico-webfont.eot?#iefix) format("embedded-opentype"), url(/assets/pacifico-webfont.svg#svgPacifico) format("svg"), url(/assets/pacifico-webfont.woff) format("woff"), url(/assets/pacifico-webfont.ttf) format("truetype");
+  /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(/assets/opensans-regular-webfont.eot);
+  /* IE9 Compat Modes */
+  src: url(/assets/opensans-regular-webfont.eot?#iefix) format("embedded-opentype"), url(/assets/opensans-regular-webfont.svg#svgOpenSansRegular) format("svg"), url(/assets/opensans-regular-webfont.woff) format("woff"), url(/assets/opensans-regular-webfont.ttf) format("truetype");
+  /* Safari, Android, iOS */
+}
+
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 /* line 9, /home/matt/.rvm/gems/ruby-2.0.0-p353/gems/bootstrap-sass-3.1.1.1/vendor/assets/stylesheets/bootstrap/_normalize.scss */
 html {
@@ -7907,7 +7922,7 @@ button.close {
     display: none !important;
   }
 }
-/* line 30, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 56, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 body {
   background-color: #5a966e;
   min-height: 875px;
@@ -7915,17 +7930,27 @@ body {
   padding-bottom: 30px;
 }
 
-/* line 37, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 63, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 h1, h2 {
   margin-top: 5px;
 }
 
-/* line 41, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 67, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+#fridge-image {
+  padding: 0;
+  margin-top: 5px;
+}
+/* line 70, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+#fridge-image img {
+  height: 35px;
+}
+
+/* line 75, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #fridge-toggle {
   display: inline-block;
 }
 
-/* line 45, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 79, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #site-wrapper {
   position: relative;
   overflow: hidden;
@@ -7933,7 +7958,7 @@ h1, h2 {
   height: 100%;
 }
 
-/* line 52, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 86, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #site-canvas {
   width: 100%;
   height: 100%;
@@ -7946,7 +7971,7 @@ h1, h2 {
   transition: .3s ease all;
 }
 
-/* line 64, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 98, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #user-menu {
   z-index: 1000;
   width: 355px;
@@ -7965,7 +7990,7 @@ h1, h2 {
   -webkit-transition: .5s ease all;
   transition: .5s ease all;
 }
-/* line 81, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 115, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #user-menu #open-fridge h3 {
   font-family: "Pacifico", cursive;
   font-size: 22px;
@@ -7982,7 +8007,7 @@ h1, h2 {
   -webkit-transform-origin: left top 0;
 }
 
-/* line 98, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 132, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #user-menu-inner {
   color: white;
   padding: 15px;
@@ -7994,18 +8019,18 @@ h1, h2 {
   height: 95%;
   width: 320px;
 }
-/* line 108, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 142, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #user-menu-inner h1, #user-menu-inner h2 {
   margin-bottom: 0;
   margin-top: 15px;
   font-family: "Pacifico", cursive;
 }
-/* line 113, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 147, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #user-menu-inner .well {
   background-color: #888;
 }
 
-/* line 118, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 152, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .icon-bar {
   margin-left: auto;
   margin-right: auto;
@@ -8017,14 +8042,14 @@ h1, h2 {
   border-radius: 2px;
 }
 
-/* line 130, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 164, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #site-wrapper.show-nav #user-menu {
   -webkit-transform: translateX(140px);
   transform: translateX(140px);
   -webkit-transform: translate3d(140px, 0, 0);
   transform: translate3d(140px, 0, 0);
 }
-/* line 136, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 170, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #site-wrapper.show-nav #site-canvas {
   -webkit-transform: translateX(180px);
   transform: translateX(180px);
@@ -8032,7 +8057,7 @@ h1, h2 {
   transform: translate3d(180px, 0, 0);
 }
 
-/* line 144, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 178, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #fridge-ingredients {
   max-height: 550px;
   overflow-y: auto;
@@ -8040,26 +8065,26 @@ h1, h2 {
   padding-left: 10px;
   padding-right: 0;
 }
-/* line 150, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 184, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 #fridge-ingredients li {
   display: inline-block;
   padding-top: 0;
 }
 
-/* line 156, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 190, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .navbar-brand {
-  padding-left: 30px;
+  padding-left: 20px;
   font-family: "Pacifico", cursive;
   text-shadow: 1px 1px 0 #666;
   font-size: 36px;
 }
 
-/* line 163, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 197, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .btn {
   font-family: "Pacifico", cursive;
 }
 
-/* line 167, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 201, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .caption {
   cursor: pointer;
   position: relative;
@@ -8074,7 +8099,7 @@ h1, h2 {
   border: 3px solid #BFA386;
 }
 
-/* line 181, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 215, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .caption::before {
   content: ' ';
   position: absolute;
@@ -8086,19 +8111,19 @@ h1, h2 {
   transition: background .35s ease-out;
 }
 
-/* line 192, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 226, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .caption:hover::before {
   background: rgba(255, 255, 255, 0.5);
 }
 
-/* line 196, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 230, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .caption__media {
   display: block;
   width: 215px;
   height: auto;
 }
 
-/* line 202, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 236, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .caption__overlay {
   position: absolute;
   top: 0;
@@ -8113,13 +8138,13 @@ h1, h2 {
   transition: transform .35s ease-in-out;
 }
 
-/* line 217, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 251, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .caption:hover .caption__overlay {
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
 
-/* line 222, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 256, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .caption__overlay__title {
   background: rgba(255, 255, 255, 0.25);
   font-weight: bold;
@@ -8129,13 +8154,13 @@ h1, h2 {
   transition: transform .35s ease-in-out;
 }
 
-/* line 231, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 265, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .caption:hover .caption__overlay__title {
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
 
-/* line 236, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 270, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .ingredient-list {
   list-style: none;
   padding: 15px 10px 15px;
@@ -8144,18 +8169,18 @@ h1, h2 {
   overflow: hidden;
   border-radius: 5px;
 }
-/* line 243, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 277, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .ingredient-list li {
   display: inline-block;
   padding-top: 0;
 }
 
-/* line 249, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 283, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .ingredient-selector-box {
   padding-left: 0;
 }
 
-/* line 253, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 287, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .ingredient-tile {
   cursor: default;
   position: relative;
@@ -8165,7 +8190,7 @@ h1, h2 {
   margin-right: 3px;
   overflow: hidden;
 }
-/* line 261, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 295, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .ingredient-tile .ingredient-tile-name {
   font-size: 20px;
   text-align: left;
@@ -8174,14 +8199,14 @@ h1, h2 {
   bottom: 30px;
   left: 8px;
 }
-/* line 269, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 303, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .ingredient-tile .ingredient-tile-category {
   position: absolute;
   bottom: 0;
   right: 5px;
 }
 
-/* line 276, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 310, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .favorite-button {
   z-index: 1000;
   color: #BFA386;
@@ -8194,45 +8219,45 @@ h1, h2 {
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
 }
-/* line 287, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 321, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .favorite-button :hover {
   color: #d9534f;
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
 }
 
-/* line 294, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 328, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .favorited {
   color: #d9534f;
 }
-/* line 296, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 330, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .favorited :hover {
   color: #BFA386;
 }
 
-/* line 301, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 335, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .placeholder {
   color: #bbb;
 }
 
-/* line 305, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 339, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .recipe {
   background-color: white;
   border: 3px solid #eee;
   border-radius: 5px;
   padding: 10px;
 }
-/* line 310, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 344, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .recipe h1, .recipe h2 {
   text-align: center;
 }
 
-/* line 315, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 349, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .recipe-image {
   border: 3px solid #BFA386;
 }
 
-/* line 319, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 353, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .recipe-list {
   list-style: none;
   text-align: center;
@@ -8240,23 +8265,23 @@ h1, h2 {
   padding-left: 0;
   overflow-y: auto;
 }
-/* line 325, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 359, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .recipe-list li {
   display: inline-block;
   padding: 15px;
 }
 
-/* line 331, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 365, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .favorite-recipes {
   height: 670px;
 }
 
-/* line 335, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 369, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .recipe-show {
   min-height: 600px;
 }
 
-/* line 339, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 373, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .selected-ingredients {
   border: thin solid #eee;
   height: 155px;
@@ -8266,13 +8291,13 @@ h1, h2 {
   overflow: hidden;
   border-radius: 5px;
 }
-/* line 347, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 381, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .selected-ingredients li {
   display: inline-block;
   padding-top: 0;
 }
 
-/* line 353, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 387, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .btn-other {
   color: white;
   background-color: #844a9e;
@@ -8299,7 +8324,7 @@ h1, h2 {
   background-color: white;
 }
 
-/* line 357, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
+/* line 391, /home/matt/App_Academy/dindin/app/assets/stylesheets/application.css.scss */
 .btn-link {
   font-family: "Open Sans", sans-serif;
 }
