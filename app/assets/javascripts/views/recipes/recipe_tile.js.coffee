@@ -1,4 +1,7 @@
 Dindin.Views.RecipeTile = Backbone.View.extend({
+  initialize: (options) ->
+    this.currentUser = options.currentUser
+
   template: JST['recipes/_tile']
 
   events: {
@@ -11,10 +14,10 @@ Dindin.Views.RecipeTile = Backbone.View.extend({
       Backbone.history.navigate('/recipes/' + this.model.id, { trigger: true })
     else
       this.model.save({}, {
-        success: ->
-          that.model.fetch({
-            success: ->
-              Backbone.history.navigate('/recipes/' + that.model.id, { trigger: true })
+        success: =>
+          @model.fetch({
+            success: =>
+              Backbone.history.navigate('/recipes/' + @model.id, { trigger: true })
               return
           })
           return

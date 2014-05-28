@@ -20,11 +20,11 @@ window.Dindin = {
 
 $ ->
   Dindin.initialize()
-  $('.menu-toggle').click ->
-    event.preventDefault()
+  $('.menu-toggle').click (e) ->
+    e.preventDefault()
     toggleNav()
-  .mouseover ->
-    event.preventDefault()
+  .mouseover (e) ->
+    e.preventDefault()
     $('#site-wrapper').addClass('show-nav')
 
   $(document).keyup (e) ->

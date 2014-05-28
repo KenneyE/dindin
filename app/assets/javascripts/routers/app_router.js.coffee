@@ -32,7 +32,9 @@ Dindin.Routers.AppRouter = Backbone.Router.extend({
     this._swapView(recipesIndexView)
 
   recipesSearch: ->
-    recipesSearchView = new Dindin.Views.RecipesSearch()
+    recipesSearchView = new Dindin.Views.RecipesSearch({
+      currentUser: this.currentUser
+    })
     this._swapView(recipesSearchView)
 
   recipeShow: (id) ->
