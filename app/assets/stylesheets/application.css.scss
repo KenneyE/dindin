@@ -14,10 +14,10 @@
  *= require_self
  */
 
- @import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,300);
 $font-family-sans-serif: 'Open Sans', sans-serif;
+
 $display-font: 'Pacifico', cursive;
-$headings-font-weight: 400;
 $main-color: #5A966E;
 $border-radius-base: 5px;
 $navbar-default-bg: darken($main-color, 10%);
@@ -67,36 +67,26 @@ h1, h2 {
   position: absolute;
   top: 0;
   left: -320px;
-  background: #bbb;
-  color: white;
-  padding-left: 15px;
-  padding-right: 50px;
-  border-top: 8px solid #888;
-  border-bottom: 8px solid #888;
+  background-color: #888;
   border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;  
   box-shadow: 1px 1px 2px #444;
+
+
+  // padding-left: 15px;
+  // padding-right: 50px;
+  // border-top: 8px solid #888;
+  // border-bottom: 8px solid #888;
+  // border-top-right-radius: 5px;
+  // border-bottom-right-radius: 5px;
+  
   -webkit-transform: translateX(0);
   transform: translateX(0);
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
-  h1, h2{
-    font-family: $display-font;
-  }
-  .well {
-    background-color: #888;
-  }
-}
-
-#menu-edge{
-  position: absolute;
-  right: 0;
-  height: 100%;
-  width: 35px;
-  background-color: #888;
-  h3{
+  #open-fridge h3{
     font-family: $display-font;
     font-size: 22px;
     text-align: center;
@@ -104,12 +94,32 @@ h1, h2 {
     color: #ddd;
     margin-top: -50px;
     position: absolute;
-    // top: 150px;
-    left: 32px;
+    left: 352px;
+    top: 50px;
     transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     transform-origin: left top 0;
     -webkit-transform-origin: left top 0;
+  }
+}
+
+#user-menu-inner{
+  color: white;
+  padding: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #bbb;
+  position: absolute;
+  top: 10px;
+  height: 95%;
+  width: 320px;
+  h1, h2{
+    margin-bottom: 0;
+    margin-top: 15px;
+    font-family: $display-font;
+  }
+  .well {
+    background-color: #888;
   }
 }
 
@@ -140,10 +150,11 @@ h1, h2 {
 }
 
 #fridge-ingredients {
-  min-height: 400px;
-  // width: 290px;
+  max-height: 550px;
+  overflow-y: auto;
   list-style: none;
   padding-left: 10px;
+  padding-right: 0;
   li {
     display: inline-block;
     padding-top: 0;
@@ -259,11 +270,12 @@ h1, h2 {
   margin-right: 3px;
   overflow: hidden;
   .ingredient-tile-name{
+    font-size: 20px;
     text-align: left;
     position: absolute;
     color: white;
     bottom: 30px;
-    left: 10px;
+    left: 8px;
   }
   .ingredient-tile-category{
     position: absolute;
