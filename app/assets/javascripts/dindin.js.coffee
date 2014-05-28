@@ -4,10 +4,12 @@ window.Dindin = {
   Views: {},
   Routers: {},
   initialize: ->
-    new Dindin.Routers.AppRouter()
-    Backbone.history.start()
     currentUser = new Dindin.Models.User()
     currentUser.fetch()
+    new Dindin.Routers.AppRouter({
+      currentUser: currentUser
+    })
+    Backbone.history.start()
     fridge = new Dindin.Views.UserFridge {
       model: currentUser
     }
@@ -21,12 +23,26 @@ $ ->
   $('.menu-toggle').click ->
     event.preventDefault()
     toggleNav()
+  .mouseover ->
+    event.preventDefault()
+    $('#site-wrapper').addClass('show-nav')
+
+  $(document).keyup (e) ->
+    if e.keyCode == 27
+      if $('#site-wrapper').hasClass('show-nav') 
+        toggleNav()
+  $(document).click (e) ->
+    container = $('#user-menu')
+    if !container.is(e.target) && container.has(e.target).length == 0
+      $('#site-wrapper').removeClass('show-nav')
 
   $('#fridge-ingredients').sortable {
     axis: 'x,y',
     connectWith: '.ing-sort',
     cancel: '.no-drag',
   }
+
+  $('.favorite-button').tooltip();
 
   toggleNav = ->
     if $('#site-wrapper').hasClass('show-nav')

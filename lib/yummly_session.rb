@@ -10,8 +10,9 @@ class YummlySession
         # facets could be used to scrape additional ingredients: 'facetField[]' => 'ingredient',
         '_app_id' => APP_ID,
         '_app_key'=> APP_KEY,
-        'maxResult' => 15,
-        'q' => ingredients.join('+')
+        'maxResult' => 16,
+        'q' => ingredients.join('+'),
+        'requirePictures' => true 
       }
     }
 

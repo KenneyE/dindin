@@ -30,5 +30,7 @@ class User < ActiveRecord::Base
 
   has_many :saved_ingredients, through: :ingredient_saves, source: :ingredient
 
-  # has_many :recipes, foreign_key: :author_id
+  has_many :recipe_favorites
+
+  has_many :favorite_recipes, through: :recipe_favorites, source: :recipe
 end

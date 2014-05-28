@@ -1,11 +1,15 @@
-<div class="text-center">
-  <h1><%= recipe.escape('title') %></h1>
-  <h6>Recipe From: <a href="<%= recipe.escape('source_site_url') %>"><%= recipe.escape('source_display_name') %></a></h6>
-  <% if(recipe.escape('total_time')) { %>
-    <p>Total Prep Time: <%= recipe.escape('total_time') %></p>
-  <% } %>
-  <hr>
+  <div class="col-md-1 col-md-offset-11"><button class="btn favorite-button <%= favorited %>" data-toggle="tooltip" title="Click to <%= addOrRemove %> favorites."><span class="glyphicon glyphicon-heart"></span></button></div>
+<div class="row">
+  <div class="text-center">
+    <h2><%= recipe.escape('title') %></h2>
+    <h6>Recipe From: <a href="<%= recipe.escape('source_site_url') %>"><%= recipe.escape('source_display_name') %></a></h6>
+    <% if(recipe.escape('total_time')) { %>
+      <p>Total Prep Time: <%= recipe.escape('total_time') %></p>
+    <% } %>
+    <hr>
+  </div>
 </div>
+<div class="row">
   <div class="col-md-4">
     <h3>Ingredients:</h3>
     <ul>
@@ -19,7 +23,10 @@
   <hr>
   <h4 class="text-center">Read full instructions on <a href="<%= recipe.escape('source_recipe_url') %>" target="_blank"><%= recipe.escape('source_display_name') %>.</a></h4>
   </div>
-<div class="col-md-12 credit">
-  <hr>
-  <p class="text-center small"><%= recipe.get('credit') %></p>
+</div>
+<div class="row">
+  <div class="col-md-12 credit">
+    <hr>
+    <p class="text-center small"><%= recipe.get('credit') %></p>
+  </div>
 </div>

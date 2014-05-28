@@ -1,5 +1,6 @@
 <h4><%= user.escape('username') %>'s ingredients:</h4>
-<p class="small">Drag and drop to add. Double click to remove.</p>
+<p class="small">Drag and drop to add. Double click to remove.<br>
+You can press 'esc' to close the fridge.</p>
 <ul class="sortable well ing-sort" id="fridge-ingredients">
   <% if(user.escape('username') === 'Guest'){ %>
     <li class="text-center"><h4>You need to be logged in to store ingredients. <a href="/users/sign_up/">Click here</a> to sign up.</h4></li>

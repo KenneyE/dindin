@@ -23,5 +23,7 @@ class Recipe < ActiveRecord::Base
     :source_display_name, :yummly_id, presence: true
   validates :title, :yummly_id, uniqueness: true
 
-  
+  has_many :recipe_favorites
+
+  has_many :user_favorites, through: :recipe_favorites, source: :user
 end

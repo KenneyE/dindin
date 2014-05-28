@@ -11,7 +11,7 @@ module Api
     end
 
     def index
-      @recipes = Recipe.all
+      @recipes = current_user.favorite_recipes
       render :index
     end
 

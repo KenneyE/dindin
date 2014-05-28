@@ -28,12 +28,12 @@ $navbar-default-link-hover-color: #f0ad4e;
 
 body{
   background-color: $main-color;
+  min-height: 875px;
   padding-top: 65px;
   padding-bottom: 30px;
 }
 
 h1, h2 {
-  line-height: 90%;
   margin-top: 5px;
 }
 
@@ -63,29 +63,20 @@ h1, h2 {
 #user-menu {
   z-index: 1000;
   width: 355px;
-  height: 100%;
+  height: 99.8%;
   position: absolute;
   top: 0;
   left: -320px;
   background-color: #888;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;  
-  box-shadow: 1px 1px 2px #444;
-
-
-  // padding-left: 15px;
-  // padding-right: 50px;
-  // border-top: 8px solid #888;
-  // border-bottom: 8px solid #888;
-  // border-top-right-radius: 5px;
-  // border-bottom-right-radius: 5px;
-  
+  box-shadow: 1px 1px 2px #444;  
   -webkit-transform: translateX(0);
   transform: translateX(0);
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
+  -webkit-transition: .5s ease all;
+  transition: .5s ease all;
   #open-fridge h3{
     font-family: $display-font;
     font-size: 22px;
@@ -175,11 +166,15 @@ h1, h2 {
 .caption {
   cursor: pointer;
   position: relative;
+  width: 215px;
+  height: 205px;
   overflow: hidden;
   border-radius: $border-radius-base;
   text-shadow: 1px 1px 0 white;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
+  border-radius: $border-radius-base;
+  border: 3px solid #BFA386;
 }
 
 .caption::before {
@@ -201,23 +196,21 @@ h1, h2 {
   display: block;
   width: 215px;
   height: auto;
-  border-radius: $border-radius-base;
-  border: 3px solid #BFA386;
 }
 
 .caption__overlay {
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 18px;
+  bottom: 10px;
   left: 0;
   padding: 10px;
   color: #333;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
+  -webkit-transform: translateY(95%);
+          transform: translateY(95%);
 
-  transition: -webkit-transform .35s ease-out;
-  transition:         transform .35s ease-out;
+  transition: -webkit-transform .35s ease-in-out;
+  transition:         transform .35s ease-in-out;
 }
 
 .caption:hover .caption__overlay {
@@ -230,18 +223,13 @@ h1, h2 {
   font-weight: bold;
   -webkit-transform: translateY( -webkit-calc(-100% - 10px) );
           transform: translateY( calc(-100% - 10px) );
-  transition: -webkit-transform .35s ease-out;
-  transition:         transform .35s ease-out;
+  transition: -webkit-transform .35s ease-in-out;
+  transition:         transform .35s ease-in-out;
 }
 
 .caption:hover .caption__overlay__title {
   -webkit-transform: translateY(0);
           transform: translateY(0);
-}
-
-.credit{
-  // position: absolute;
-  // bottom: 10px;
 }
 
 .ingredient-list{
@@ -284,6 +272,31 @@ h1, h2 {
   }
 }
 
+.favorite-button{
+  z-index: 1000;
+  color: #BFA386;
+  font-size: 36px;
+  background-color: rgba(0,0,0,0);
+  position: absolute;
+  right: -20px;
+  top: -25px;
+  height: 35px;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+  :hover {
+    color: #d9534f;
+    -webkit-transition: .3s ease all;
+    transition: .3s ease all;
+  }
+}
+
+.favorited{
+  color: #d9534f;
+  :hover{
+    color: #BFA386;
+  }
+}
+
 .placeholder {
   color: #bbb;
 }
@@ -312,6 +325,10 @@ h1, h2 {
     display: inline-block;
     padding: 15px;
   }
+}
+
+.favorite-recipes{
+    height: 670px;
 }
 
 .recipe-show{
