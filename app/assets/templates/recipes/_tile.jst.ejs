@@ -11,14 +11,16 @@
     </div>
   </div>
   <div class="front back">
-    <h4>Ingredients Include:</h4>
+    <h4>Ingredients You Have:</h4>
     <ul>
-      <% _(recipe.get('ingredients')).each(function(ingredient){ %>
-        <% if(userIngredients.indexOf(ingredient) !== -1){ %>
-          <li class="highlight" data-toggle="tooltip" title="You have this!"><%= ingredient %>,</li>
-         <% } else{ %>
+      <% _(recipe.ingredientMatches()).each(function(ingredient){ %>
           <li><%= ingredient %>,</li>
-         <% } %>
+      <% }) %>
+    </ul>
+    <h4>Ingredients You Need:</h4>
+    <ul>
+      <% _(recipe.otherIngredients()).each(function(ingredient){ %>
+        <li><%= ingredient %></li>
       <% }) %>
     </ul>
   </div>

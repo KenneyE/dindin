@@ -5,6 +5,22 @@ Dindin.Models.Recipe = Backbone.Model.extend({
   urlRoot: '/api/recipes',
 
   ingredientMatches: ->
-    _(this.get('ingredients')).filter (ingredient) ->
-      Dindin.currentUser.ingredients().where({name: ingredient}).length > 0
+    if this._matches
+      return this._matches
+    else
+    this._matches = []
+    Dindin.currentUser.ingredients().each (userIngredient) =>
+      pattern = new RegExp("\s*" + userIngredient.get('name') + "\s*", 'i')
+      _(@get('ingredients')).each (ingredient) =>
+        @_matches.push(ingredient) if pattern.test(ingredient)
+        return
+      return
+    this.matches
+
+  numberOfMatches: ->
+    this.ingredientMatches().length
+
+  otherIngredients: ->
+    _(this.get('ingredients')).filter (ingredient) =>
+      @ingredientMatches().indexOf(ingredient) == -1
 })

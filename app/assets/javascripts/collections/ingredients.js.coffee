@@ -24,9 +24,9 @@ Dindin.Collections.Ingredients = Backbone.Collection.extend({
     return this if letters == ''
 
     pattern = new RegExp('^.*' + letters + '.*$', 'i')
-    _(this.filter (data) -> 
-      pattern.test(data.get('name'));
-    );
+    _(this.filter (ingredient) -> 
+      pattern.test(ingredient.get('name'))
+    )
 
   url: 'api/ingredients',
 })
