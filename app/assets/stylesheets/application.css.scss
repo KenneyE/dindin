@@ -213,7 +213,6 @@ h1, h2 {
     transform-style: preserve-3d;
     -webkit-transition: all .5s linear;
     transition: all .5s linear;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
   img{
