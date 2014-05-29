@@ -170,7 +170,7 @@ Ingredient.create!([
   {name: "cheddar cheese", category: "Dairy"},
   {name: "swiss cheese", category: "Dairy"},
   {name: "blue cheese", category: "Dairy"},
-  {name: "gorgonzola\\cheese", category: "Dairy"},
+  {name: "gorgonzola\ cheese", category: "Dairy"},
   {name: "eggs", category: "Dairy"},
   {name: "duck eggs", category: "Dairy"},
   {name: "goat milk", category: "Dairy"},

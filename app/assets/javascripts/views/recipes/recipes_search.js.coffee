@@ -1,13 +1,12 @@
 Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
-  initialize: (options) ->
+  initialize: ->
+    Dindin.currentUser.fetch()
     this.collection = new Dindin.Collections.SearchedRecipes()
-    this.currentUser = options.currentUser
     this.ingredientSelector = new Dindin.Views.IngredientSelector({
       formElSelector: '#recipe-search-form'
     });
     recipeMatches = new Dindin.Views.RecipeMatches({
       collection: this.collection
-      currentUser: this.currentUser
     });
     this.addSubview('.recipe-matches', recipeMatches)
     this.addSubview('.ingredient-selector-box', this.ingredientSelector)

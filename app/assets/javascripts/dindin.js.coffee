@@ -4,14 +4,14 @@ window.Dindin = {
   Views: {},
   Routers: {},
   initialize: ->
-    currentUser = new Dindin.Models.User()
-    currentUser.fetch()
+    Dindin.currentUser = new Dindin.Models.User()
+    Dindin.currentUser.fetch()
     new Dindin.Routers.AppRouter({
-      currentUser: currentUser
+      currentUser: Dindin.currentUser
     })
     Backbone.history.start()
     fridge = new Dindin.Views.UserFridge {
-      model: currentUser
+      model: Dindin.currentUser
     }
     $('#fridge-box').append(fridge.render().$el)
     fridge.delegateEvents()
@@ -43,6 +43,7 @@ $ ->
   }
 
   $('.favorite-button').tooltip();
+  $('.highlight').tooltip();
 
   toggleNav = ->
     if $('#site-wrapper').hasClass('show-nav')

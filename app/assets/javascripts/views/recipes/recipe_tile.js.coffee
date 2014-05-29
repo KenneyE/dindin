@@ -1,6 +1,5 @@
 Dindin.Views.RecipeTile = Backbone.View.extend({
   initialize: (options) ->
-    this.currentUser = options.currentUser
 
   template: JST['recipes/_tile']
 
@@ -28,6 +27,7 @@ Dindin.Views.RecipeTile = Backbone.View.extend({
   render: ->
     renderedContent = this.template({
         recipe: this.model
+        userIngredients: Dindin.currentUser.ingredients().pluck('name')
     })
     this.$el.html(renderedContent)
     this

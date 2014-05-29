@@ -1,13 +1,11 @@
 Dindin.Routers.AppRouter = Backbone.Router.extend({
-  initialize: (options) ->
-    this.currentUser = options.currentUser
+  initialize: ->
 
   routes: {
     "": "recipesSearch",
     "recipes": "recipesIndex",
     "recipes/:id": "recipeShow",
     "ingredients": "ingredientsIndex",
-    "ingredients/new": "ingredientsNew",
   },
 
   ingredientsIndex: ->
@@ -16,13 +14,6 @@ Dindin.Routers.AppRouter = Backbone.Router.extend({
       collection: Dindin.Collections.ingredients
     })
     this._swapView(ingredientsIndexView)
-
-  ingredientsNew: ->
-    ingredient = new Dindin.Models.Ingredient()
-    ingredientNewView = new Dindin.Views.IngredientNew({
-      model: ingredient
-    })
-    this._swapView(ingredientNewView)
 
   recipesIndex: ->
     Dindin.Collections.recipes.fetch()
@@ -33,7 +24,6 @@ Dindin.Routers.AppRouter = Backbone.Router.extend({
 
   recipesSearch: ->
     recipesSearchView = new Dindin.Views.RecipesSearch({
-      currentUser: this.currentUser
     })
     this._swapView(recipesSearchView)
 
@@ -42,7 +32,6 @@ Dindin.Routers.AppRouter = Backbone.Router.extend({
     recipe = Dindin.Collections.recipes.getOrFetchById(id);
     recipeShowView = new Dindin.Views.RecipeShow({
       model: recipe
-      currentUser: this.currentUser
     })
     this._swapView(recipeShowView)
 

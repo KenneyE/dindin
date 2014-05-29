@@ -5,13 +5,16 @@
     <img class="caption__media" src="<%= recipe.escape('small_image_url') %>" />
   <% } %>
   <div class="caption__overlay">
-      <p><u>Ingredients:</u></p>
-      <ul>
-        <% _(recipe.get('ingredients')).each(function(ingredient){ %>
-          <li><%= ingredient %></li>
-        <% }) %>
-      </ul>
-      <p class="caption__overlay__content"><%= recipe.escape('ingredients')%></p>
+    <p>Ingredients Include:</p>
+    <ul>
+      <% _(recipe.get('ingredients')).each(function(ingredient){ %>
+        <% if(userIngredients.indexOf(ingredient) !== -1){ %>
+          <li class="highlight" data-toggle="tooltip" title="You have this!"><%= ingredient %>,</li>
+         <% } else{ %>
+          <li><%= ingredient %>,</li>
+         <% } %>
+      <% }) %>
+    </ul>
   </div>
   <div class="caption_title">
     <h5><%= recipe.escape('title') %></h5>

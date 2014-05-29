@@ -1,8 +1,7 @@
 Dindin.Views.RecipeShow = Backbone.View.extend({
-  initialize: (options) -> 
-    this.currentUser = options.currentUser
+  initialize: -> 
     this.listenTo(this.model, 'sync', this.render)
-    this.listenTo(this.currentUser, 'sync', this.render)
+    this.listenTo(Dindin.currentUser, 'sync', this.render)
 
   className: 'col-md-8 col-md-offset-2 recipe recipe-show',
 
@@ -13,7 +12,7 @@ Dindin.Views.RecipeShow = Backbone.View.extend({
   template: JST['recipes/show'],
 
   render: ->
-    if this.currentUser.favoriteRecipes().findWhere({id: this.model.id})
+    if Dindin.currentUser.favoriteRecipes().findWhere({id: this.model.id})
       favorited = "favorited"
       addOrRemove = "remove from"
     else
@@ -30,12 +29,12 @@ Dindin.Views.RecipeShow = Backbone.View.extend({
 
   toggleFavorite: ->
     id = this.model.id
-    recipes = this.currentUser.favoriteRecipes()
+    recipes = Dindin.currentUser.favoriteRecipes()
     if recipes.findWhere({id: this.model.id})
       recipes.remove(this.model)
     else
       recipes.add(this.model)
     recipeIds = recipes.map (recipe) ->
       recipe.get('id')
-    this.currentUser.save({ user: {'favorite_recipe_ids': recipeIds } }, { patch: true })
+    Dindin.currentUser.save({ user: {'favorite_recipe_ids': recipeIds } }, { patch: true })
 })

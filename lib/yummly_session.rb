@@ -24,7 +24,7 @@ class YummlySession
     p['matches'].each do |match|
       recipe = {
         title: match['recipeName'],
-        ingredients: match['ingredients'].join(','),
+        ingredients: match['ingredients'].join('|'),
         small_image_url: match['smallImageUrls'][0],
         total_time_in_seconds: match['totalTimeInSeconds'],
         source_display_name: match['sourceDisplayName'],
