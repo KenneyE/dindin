@@ -27,6 +27,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
     this.$el.html(renderedContent)
     this.renderSubviews()
     this.setSortable()
+    this.togglePlaceholder()
     this
 
   setSortable: ->
@@ -40,6 +41,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
         ingredientIds = _(ingredientIds).filter (id) -> id != ""
         @ingredientSelector.toggleSelected(ui.item)
         @searchByIds(ingredientIds)
+        @togglePlaceholder()
     })
 
   searchByIds: (ids) ->
@@ -52,4 +54,11 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
         data: $.param(formData),
         add: true,
       })
+
+  togglePlaceholder: ->
+    $ingredientSelector = this.$el.find('.selected-ingredients')
+    if $ingredientSelector.children().length == 0
+      $ingredientSelector.append('<h3 class="text-center placeholder no-drag">Drag and drop ingredient tiles here to search for recipes.</h3>')
+    else
+      $ingredientSelector.find('.placeholder').remove()
 })

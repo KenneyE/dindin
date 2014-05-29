@@ -35,11 +35,9 @@ $ ->
     container = $('#user-menu')
     if !container.is(e.target) && container.has(e.target).length == 0
       $('#site-wrapper').removeClass('show-nav')
-
-  $('#fridge-ingredients').sortable {
-    axis: 'x,y',
-    connectWith: '.ing-sort',
-    cancel: '.no-drag',
+  $('#user-menu a h3').sortable {
+    over: (event, ui) ->
+      $('#site-wrapper').addClass('show-nav')
   }
   $('.favorite-button').tooltip()
   $('.highlight').tooltip()
