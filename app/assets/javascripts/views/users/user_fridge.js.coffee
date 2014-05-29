@@ -14,21 +14,24 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     ingredientTileView.render()
 
   events: {
-    'dblclick #fridge-ingredients li': 'removeIngredient'
+    'dblclick #fridge-ingredients li': 'removeIngredientByClick'
   },
 
-  removeIngredient: (event) ->
+  removeIngredientByClick: (event) ->
     $tile = $(event.currentTarget)
     id = $tile.data('id')
     $tile.fadeOut(200, =>
-      @removeSubviewByDataId(id, '#fridge-ingredients')
-      ingredient = @model.ingredients().get(id)
-      @.model.ingredients().remove(ingredient)
-      ingredientIds = @model.ingredients().map (ingredient) ->
-        ingredient.get('id')
-      @model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true })
+      @removeIngredient(id)
     )
     return    
+
+  removeIngredient: (id) ->
+    this.removeSubviewByDataId(id, '#fridge-ingredients')
+    ingredient = this.model.ingredients().get(id)
+    this.model.ingredients().remove(ingredient)
+    ingredientIds = this.model.ingredients().map (ingredient) ->
+      ingredient.get('id')
+    this.model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true })
 
   removeSubviewByDataId: (id, selector) ->
     selectedSubview = _.find(this.subviews()[selector], (subview) -> 
@@ -53,8 +56,11 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
       cancel: '.no-drag',
       receive: (event, ui) =>
         if this.model.get('id')
-          id = ui.item.data('id');
+          id = ui.item.data('id')
           @updateSavedIngredients(id)
+      remove: (event, ui) =>
+        id = ui.item.data('id')
+        @removeIngredient(id) if ui.item.parent().hasClass('ingredient-list')
     }
 
   template: JST['users/fridge']
