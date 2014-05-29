@@ -1,4 +1,5 @@
 <div class="recipe-tile quick-flip">
+  <div class="recipe-tile-inner">
   <div class="front">
     <% if(recipe.escape('large_image_url')){ %>
       <img src="<%= recipe.escape('large_image_url') %>" />
@@ -9,7 +10,7 @@
       <h5><%= recipe.escape('title') %></h5>
     </div>
   </div>
-  <div class="back">
+  <div class="front back">
     <h4>Ingredients Include:</h4>
     <ul>
       <% _(recipe.get('ingredients')).each(function(ingredient){ %>
@@ -20,5 +21,6 @@
          <% } %>
       <% }) %>
     </ul>
+  </div>
   </div>
 </div>

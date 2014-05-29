@@ -202,6 +202,20 @@ h1, h2 {
   position: relative;
   width: 215px;
   height: 205px;
+  z-index: 1;
+ .recipe-tile{
+   perspective: 1000;
+ }
+  .recipe-tile-inner {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all .5s linear;
+    transition: all .5s linear;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
   img{
     display: block;
     width: 215px;
@@ -215,13 +229,16 @@ h1, h2 {
     border: 3px solid #BFA386;
     height: 205px;
     width: 215px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   .front{
-    z-index: 10;
     overflow: hidden;
   }
   .back{
-    display: hidden;
+    display: block;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
     background-color: #eee;
     overflow-y: auto;
     ul{
@@ -242,6 +259,49 @@ h1, h2 {
     }
   }
 }
+
+.recipe-tile:hover .recipe-tile-inner{
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  box-shadow: -5px 5px 5px #aaa;
+}
+
+
+// #f1_container {
+//   position: relative;
+//   margin: 10px auto;
+//   width: 450px;
+//   height: 281px;
+//   z-index: 1;
+// }
+// #f1_container {
+//   perspective: 1000;
+// }
+// #f1_card {
+//   width: 100%;
+//   height: 100%;
+//   transform-style: preserve-3d;
+//   transition: all 1.0s linear;
+// }
+// #f1_container:hover #f1_card {
+//   transform: rotateY(180deg);
+//   box-shadow: -5px 5px 5px #aaa;
+// }
+// .face {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   backface-visibility: hidden;
+// }
+// .face.back {
+//   display: block;
+//   transform: rotateY(180deg);
+//   box-sizing: border-box;
+//   padding: 10px;
+//   color: white;
+//   text-align: center;
+//   background-color: #aaa;
+// }
 
 .ingredient-list{
   list-style: none;

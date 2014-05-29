@@ -41,7 +41,6 @@ $ ->
     connectWith: '.ing-sort',
     cancel: '.no-drag',
   }
-  $('.quick-flip').quickFlip()
   $('.favorite-button').tooltip()
   $('.highlight').tooltip()
 

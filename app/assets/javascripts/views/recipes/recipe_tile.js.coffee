@@ -5,8 +5,8 @@ Dindin.Views.RecipeTile = Backbone.View.extend({
 
   events: {
     'click div.recipe-tile': 'goToShowPage'
-    'mouseenter div.quick-flip': 'quickFlip'
-    'mouseleave div.quick-flip': 'quickFlip'
+    # 'mouseenter div.quick-flip': 'quickFlip'
+    # 'mouseleave div.quick-flip': 'quickFlip'
   },
 
   goToShowPage: (event) ->
@@ -25,8 +25,11 @@ Dindin.Views.RecipeTile = Backbone.View.extend({
       })
       return
 
-  quickFlip: (event) ->
-    $(event.currentTarget).quickFlipper()
+  # quickFlip: (event) ->
+  #   $(event.currentTarget).quickFlipper({
+  #     openSpeed: 300,
+  #     closeSpeed: 300,
+  #   })
 
   render: ->
     renderedContent = this.template({
