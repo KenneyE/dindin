@@ -37,5 +37,6 @@ Dindin.Views.RecipeShow = Backbone.View.extend({
       recipes.add(this.model)
     recipeIds = recipes.map (recipe) ->
       recipe.get('id')
+    recipeIds = ['empty'] if recipeIds.length == 0
     Dindin.currentUser.save({ user: {'favorite_recipe_ids': recipeIds } }, { patch: true })
 })

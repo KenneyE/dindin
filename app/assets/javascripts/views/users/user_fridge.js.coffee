@@ -31,6 +31,7 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     this.model.ingredients().remove(ingredient)
     ingredientIds = this.model.ingredients().map (ingredient) ->
       ingredient.get('id')
+    ingredientIds = ['empty'] if ingredientIds.length == 0 
     this.model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true })
 
   removeSubviewByDataId: (id, selector) ->
@@ -71,7 +72,7 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     this.model.ingredients().add(newIngredient)
     ingredientIds = this.model.ingredients().map (ingredient) ->
       ingredient.get('id')
-    ingredientIds = ingredientIds || []
+    ingredientIds = ['empty'] if ingredientIds.length == 0 
     this.model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true })
     return
 })

@@ -8,7 +8,13 @@ module Api
     def update
       if user_signed_in?
         @user = current_user
-        @user.update_attributes(user_params)
+        if user_params[:saved_ingredient_ids] === ['empty']
+          @user.update_attributes(saved_ingredient_ids: [])
+        elsif user_params[:favorite_recipe_ids] === ['empty']
+          @user.update_attributes(favorite_recipe_ids: [])
+        else
+          @user.update_attributes(user_params)
+        end
       end
       render :show
     end
@@ -16,8 +22,6 @@ module Api
     private
 
     def user_params
-      params[:user][:saved_ingredient_ids] ||= []
-      params[:user][:favorite_recipe_ids] ||= []
       params.require(:user).permit(saved_ingredient_ids: [], favorite_recipe_ids: [])
     end
   end

@@ -358,6 +358,7 @@ h1, h2 {
   height: 350px;
   padding-left: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   li{
     display: inline-block;
     padding: 15px;
