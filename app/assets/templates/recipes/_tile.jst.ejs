@@ -1,21 +1,9 @@
-<div class="caption">
+<div class="recipe-tile">
   <% if(recipe.escape('large_image_url')){ %>
-    <img class="caption__media" src="<%= recipe.escape('large_image_url') %>" />
+    <img src="<%= recipe.escape('large_image_url') %>" />
   <% }else{ %>
-    <img class="caption__media" src="<%= recipe.escape('small_image_url') %>" />
+    <img src="<%= recipe.escape('small_image_url') %>" />
   <% } %>
-  <div class="caption__overlay">
-    <p>Ingredients Include:</p>
-    <ul>
-      <% _(recipe.get('ingredients')).each(function(ingredient){ %>
-        <% if(userIngredients.indexOf(ingredient) !== -1){ %>
-          <li class="highlight" data-toggle="tooltip" title="You have this!"><%= ingredient %>,</li>
-         <% } else{ %>
-          <li><%= ingredient %>,</li>
-         <% } %>
-      <% }) %>
-    </ul>
-  </div>
   <div class="caption_title">
     <h5><%= recipe.escape('title') %></h5>
   </div>
