@@ -39,7 +39,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
         ingredientIds = $('.selected-ingredients')
           .sortable('toArray', { attribute: 'data-id'} )
         ingredientIds = _(ingredientIds).filter (id) -> id != ""
-        unless ui.item.parent().attr('id') == 'fridge-ingredients'
+        unless ui.sender.attr('id') == 'fridge-ingredients'
           @ingredientSelector.toggleSelected(ui.item)
         @searchByIds(ingredientIds)
       update: (event, ui) =>

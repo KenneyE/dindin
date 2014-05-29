@@ -61,6 +61,8 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
       remove: (event, ui) =>
         id = ui.item.data('id')
         @removeIngredient(id) if ui.item.parent().hasClass('ingredient-list')
+        if ui.item.parent().hasClass('selected-ingredients')
+          ui.item.data('selected', true)
     }
 
   template: JST['users/fridge']
