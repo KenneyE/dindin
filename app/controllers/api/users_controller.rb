@@ -16,6 +16,8 @@ module Api
     private
 
     def user_params
+      params[:user][:saved_ingredient_ids] ||= []
+      params[:user][:favorite_recipe_ids] ||= []
       params.require(:user).permit(saved_ingredient_ids: [], favorite_recipe_ids: [])
     end
   end
