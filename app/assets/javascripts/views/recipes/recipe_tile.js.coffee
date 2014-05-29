@@ -4,7 +4,9 @@ Dindin.Views.RecipeTile = Backbone.View.extend({
   template: JST['recipes/_tile']
 
   events: {
-    'click div.caption': 'goToShowPage'
+    'click div.recipe-tile': 'goToShowPage'
+    'mouseenter div.quick-flip': 'quickFlip'
+    'mouseleave div.quick-flip': 'quickFlip'
   },
 
   goToShowPage: (event) ->
@@ -23,6 +25,8 @@ Dindin.Views.RecipeTile = Backbone.View.extend({
       })
       return
 
+  quickFlip: (event) ->
+    $(event.currentTarget).quickFlipper()
 
   render: ->
     renderedContent = this.template({

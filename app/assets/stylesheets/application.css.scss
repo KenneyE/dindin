@@ -199,16 +199,37 @@ h1, h2 {
 
 .recipe-tile{
   cursor: pointer;
+  position: relative;
   width: 215px;
   height: 205px;
-  border-radius: $border-radius-base;
-  border: 3px solid #BFA386;
-  overflow: hidden;
   img{
     display: block;
     width: 215px;
     height: auto;
     border-bottom: 2px solid white;
+  }
+  .front, .back{
+    position: absolute;
+    top: 0;
+    border-radius: $border-radius-base;
+    border: 3px solid #BFA386;
+    height: 205px;
+    width: 215px;
+  }
+  .front{
+    z-index: 10;
+    overflow: hidden;
+  }
+  .back{
+    display: hidden;
+    background-color: #eee;
+    overflow-y: auto;
+    ul{
+      padding-left: 0;
+      li{
+        padding: 2px;
+      }
+    }
   }
   .caption_title {
     height: 70px;
@@ -221,79 +242,6 @@ h1, h2 {
     }
   }
 }
-
-// .caption {
-//   cursor: pointer;
-//   position: relative;
-//   width: 215px;
-//   height: 205px;
-//   overflow: hidden;
-//   border-radius: $border-radius-base;
-//   -webkit-transform: translateZ(0);
-//           transform: translateZ(0);
-//   border-radius: $border-radius-base;
-//   border: 3px solid #BFA386;
-// }
-
-// .caption::before {
-//   content: ' ';
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   background: transparent;
-//   transition: background .35s ease-out;
-// }
-
-// .caption:hover::before {
-//   background: rgba(71, 118, 87, .8);
-// }
-
-// .caption__media {
-//   display: block;
-//   width: 215px;
-//   height: auto;
-//   border-bottom: 2px solid white;
-// }
-
-// .caption__overlay {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   padding: 10px;
-//   overflow-y: auto;
-//   color: white;
-//   text-shadow: 1px 1px 0 black;
-//   -webkit-transform: translateY(100%);
-//   transform: translateY(100%);
-//   transition: -webkit-transform .35s ease-in-out;
-//   transition: transform .35s ease-in-out;
-//   p {
-//     margin-bottom: 0;
-//   }
-//   ul {
-//     padding-left: 0;
-//     text-align: left;
-//     li{
-//       padding: 2px;
-//     }
-//     .highlight {
-//       background-color: #f0ad4e;
-//       border-radius: 2px;
-//     }
-//   }
-//   :-webkit-scrollbar { 
-//     display: none; 
-//   }
-// }
-
-// .caption:hover .caption__overlay {
-//   -webkit-transform: translateY(0);
-//           transform: translateY(0);
-// }
 
 .ingredient-list{
   list-style: none;

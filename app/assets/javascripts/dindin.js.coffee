@@ -41,9 +41,9 @@ $ ->
     connectWith: '.ing-sort',
     cancel: '.no-drag',
   }
-
-  $('.favorite-button').tooltip();
-  $('.highlight').tooltip();
+  $('.quick-flip').quickFlip()
+  $('.favorite-button').tooltip()
+  $('.highlight').tooltip()
 
   toggleNav = ->
     if $('#site-wrapper').hasClass('show-nav')
