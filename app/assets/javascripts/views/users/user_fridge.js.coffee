@@ -1,7 +1,7 @@
 Dindin.Views.UserFridge = Backbone.CompositeView.extend({
   initialize: ->
-    this.listenTo(this.model, 'sync', this.render)
-    this.listenTo(this.model.ingredients(), 'sync remove', this.render)
+    this.listenToOnce(this.model, 'sync', this.render)
+    # this.listenTo(this.model.ingredients(), 'sync', this.render)
     this.listenTo(this.model.ingredients(), 'add', this.addIngredient)
     this.model.ingredients().each(this.addIngredient.bind(this))
     return
@@ -11,7 +11,6 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
       model: ingredient
     })
     this.addSubview('#fridge-ingredients', ingredientTileView)
-    ingredientTileView.render()
 
   events: {
     'dblclick #fridge-ingredients li': 'removeIngredientByClick'
@@ -73,6 +72,6 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     ingredientIds = this.model.ingredients().map (ingredient) ->
       ingredient.get('id')
     ingredientIds = ['empty'] if ingredientIds.length == 0 
-    this.model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true })
+    this.model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true, silent: true })
     return
 })
