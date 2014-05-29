@@ -10,7 +10,10 @@ Dindin.Models.Recipe = Backbone.Model.extend({
     else
     this._matches = []
     Dindin.currentUser.ingredients().each (userIngredient) =>
-      pattern = new RegExp("\s*" + userIngredient.get('name') + "\s*", 'i')
+      matchString = userIngredient.get('name')
+      if matchString[matchString.length-1] == 's'
+        matchString = matchString.slice(0, matchString.length-1)
+      pattern = new RegExp("\s*" + matchString + "\s*", 'i')
       _(@get('ingredients')).each (ingredient) =>
         @_matches.push(ingredient) if pattern.test(ingredient)
         return

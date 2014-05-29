@@ -11,15 +11,17 @@
     </div>
   </div>
   <div class="front back">
-    <h4>Ingredients You Have:</h4>
+    <% if(matchedIngredients.length > 0){ %>
+    <h5>Ingredients You Have:</h5>
     <ul>
-      <% _(recipe.ingredientMatches()).each(function(ingredient){ %>
+      <% _(matchedIngredients).each(function(ingredient){ %>
           <li><%= ingredient %>,</li>
       <% }) %>
     </ul>
-    <h4>Ingredients You Need:</h4>
+    <% } %>
+    <h5>Ingredients You Need:</h5>
     <ul>
-      <% _(recipe.otherIngredients()).each(function(ingredient){ %>
+      <% _(otherIngredients).each(function(ingredient){ %>
         <li><%= ingredient %></li>
       <% }) %>
     </ul>

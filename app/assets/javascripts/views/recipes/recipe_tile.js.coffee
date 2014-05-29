@@ -27,7 +27,8 @@ Dindin.Views.RecipeTile = Backbone.View.extend({
   render: ->
     renderedContent = this.template({
         recipe: this.model
-        userIngredients: Dindin.currentUser.ingredients().pluck('name')
+        matchedIngredients: this.model.ingredientMatches()
+        otherIngredients: this.model.otherIngredients()
     })
     this.$el.html(renderedContent)
     this
