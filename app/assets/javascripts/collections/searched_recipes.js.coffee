@@ -1,7 +1,8 @@
 Dindin.Collections.SearchedRecipes = Backbone.Collection.extend({
   model: Dindin.Models.Recipe
 
-  comparator: 'numberOfmatches'
+  comparator: (model) ->
+    -model.numberOfMatches()
 
   url: 'api/recipes/search'
 })

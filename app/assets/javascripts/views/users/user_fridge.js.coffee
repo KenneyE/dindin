@@ -4,6 +4,7 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     # this.listenTo(this.model.ingredients(), 'sync', this.render)
     this.listenTo(this.model.ingredients(), 'add', this.addIngredient)
     this.model.ingredients().each(this.addIngredient.bind(this))
+    this.listenTo(Dindin.Routers.appRouter, 'route', this.fetchIngredients)
     return
 
   addIngredient: (ingredient) ->
@@ -15,6 +16,9 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
   events: {
     'dblclick #fridge-ingredients li': 'removeIngredientByClick'
   },
+
+  fetchIngredients: ->
+    this.renderSubviews()
 
   removeIngredientByClick: (event) ->
     $tile = $(event.currentTarget)
@@ -55,9 +59,8 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
       connectWith: '.ing-sort',
       cancel: '.no-drag',
       receive: (event, ui) =>
-        if this.model.get('id')
-          id = ui.item.data('id')
-          @updateSavedIngredients(id)
+        id = ui.item.data('id')
+        @updateSavedIngredients(id)
       remove: (event, ui) =>
         id = ui.item.data('id')
         @removeIngredient(id) if ui.item.parent().hasClass('ingredient-list')
@@ -74,6 +77,7 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     ingredientIds = this.model.ingredients().map (ingredient) ->
       ingredient.get('id')
     ingredientIds = ['empty'] if ingredientIds.length == 0 
-    this.model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true, silent: true })
+    if this.model.get('id')
+      this.model.save({ user: {'saved_ingredient_ids': ingredientIds } }, { patch: true, silent: true })
     return
 })

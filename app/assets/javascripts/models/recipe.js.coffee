@@ -20,7 +20,7 @@ Dindin.Models.Recipe = Backbone.Model.extend({
     this._matches
 
   numberOfMatches: ->
-    this.ingredientMatches().length
+    this.matchedIngredients.length
 
   otherIngredients: ->
     _(this.get('ingredients')).filter (ingredient) =>

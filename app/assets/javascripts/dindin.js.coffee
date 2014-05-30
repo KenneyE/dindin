@@ -6,8 +6,7 @@ window.Dindin = {
   initialize: ->
     Dindin.currentUser = new Dindin.Models.User()
     Dindin.currentUser.fetch()
-    new Dindin.Routers.AppRouter({
-      currentUser: Dindin.currentUser
+    Dindin.Routers.appRouter = new Dindin.Routers.AppRouter({
     })
     Dindin.Collections.ingredients = new Dindin.Collections.Ingredients()
     Dindin.Collections.ingredients.fetch()
@@ -22,6 +21,12 @@ window.Dindin = {
 
 $ ->
   Dindin.initialize()
+  $('input#guest-login').click (e) ->
+    e.preventDefault()
+    $('#login-email').val('guest@test.com')
+    $('#login-password').val('password')
+    $('#login-submit').click()
+
   $('.menu-toggle').click (e) ->
     e.preventDefault()
     toggleNav()
@@ -33,6 +38,7 @@ $ ->
     if e.keyCode == 27
       if $('#site-wrapper').hasClass('show-nav') 
         toggleNav()
+        $('#fridge-ingredients')
   $(document).click (e) ->
     container = $('#user-menu')
     if !container.is(e.target) && container.has(e.target).length == 0

@@ -50,6 +50,40 @@ body{
   padding-bottom: 30px;
 }
 
+.login-background{
+  background: image-url('tile_background.png');
+  background-size: cover;
+}
+
+body.login-background:before{
+    content: ' ';
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+.login{
+  margin-top: 100px;
+  box-shadow: 3px 3px 3px #333;
+  height: 400px;
+  h1{
+    font-size: 128px;
+    color: $main-color;
+    text-shadow: 3px 3px 0 white, 6px 6px 0 #eee;
+    margin-top: 70px;
+    font-family: $display-font;
+  }
+  h2{ 
+    margin-top: 30px;
+  }
+  h3{
+    text-align: center;
+  }
+}
+
 h1, h2 {
   margin-top: 5px;
 }
@@ -136,6 +170,9 @@ h1, h2 {
   }
   .well {
     background-color: #888;
+    a{
+      color: $link-hover-color
+    }
   }
 }
 
