@@ -3,6 +3,7 @@ window.Dindin = {
   Collections: {},
   Views: {},
   Routers: {},
+  Tours: {},
   initialize: ->
     Dindin.currentUser = new Dindin.Models.User()
     Dindin.currentUser.fetch()

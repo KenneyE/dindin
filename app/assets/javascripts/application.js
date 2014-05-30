@@ -18,6 +18,7 @@
 //= require bootstrap
 //= require serializeJSON
 //= require spin.min
+//= require shepherd.min
 //= require dindin
 //= require_tree ../templates
 //= require_tree ./models

@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require shepherd-theme-arrows
+ *= require shepherd-theme-arrows-plain-buttons
  */
 
 @font-face {
@@ -42,6 +44,7 @@ $navbar-default-color: white;
 $navbar-default-link-color: white;
 $navbar-default-link-hover-color: #f0ad4e;
 @import "bootstrap";
+@import "shepherd-theme-arrows";
 
 body{
   background-color: $main-color;
