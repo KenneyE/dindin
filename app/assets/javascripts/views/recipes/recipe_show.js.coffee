@@ -26,6 +26,9 @@ Dindin.Views.RecipeShow = Backbone.View.extend({
       addOrRemove: addOrRemove
     })
     this.$el.html(renderedContent)
+    $('span.favorite-button').popover({
+    trigger: 'hover'
+    })
     this
 
   toggleFavorite: ->

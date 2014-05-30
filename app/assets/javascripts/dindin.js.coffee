@@ -41,9 +41,7 @@ $ ->
     over: (event, ui) ->
       $('#site-wrapper').addClass('show-nav')
   }
-  $('.favorite-button').tooltip()
-  $('.highlight').tooltip()
-
+  
   toggleNav = ->
     if $('#site-wrapper').hasClass('show-nav')
       $('#site-wrapper').removeClass('show-nav')

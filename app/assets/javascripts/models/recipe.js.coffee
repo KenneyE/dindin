@@ -5,9 +5,6 @@ Dindin.Models.Recipe = Backbone.Model.extend({
   urlRoot: '/api/recipes',
 
   ingredientMatches: ->
-    # if this._matches
-    #   return this._matches
-    # else
     matches = []
     that = this
     Dindin.currentUser.ingredients().each (userIngredient) ->
@@ -19,7 +16,7 @@ Dindin.Models.Recipe = Backbone.Model.extend({
         matches.push(ingredient) if pattern.test(ingredient)
         return
       return
-    this._matches = matches
+    this._matches = _.uniq(matches)
     this._matches
 
   numberOfMatches: ->
