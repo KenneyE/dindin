@@ -42,3 +42,4 @@ searchTour.addStep 'recipeMatches',
     text: 'Next'
     action: searchTour.next
   ]
+  
