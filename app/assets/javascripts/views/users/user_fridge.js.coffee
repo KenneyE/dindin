@@ -18,7 +18,9 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
   },
 
   fetchIngredients: ->
-    this.renderSubviews()
+    this.removeSubviews('#fridge-ingredients')
+    this.model.ingredients().each(this.addIngredient.bind(this))
+    this.render()
 
   removeIngredientByClick: (event) ->
     $tile = $(event.currentTarget)
@@ -44,7 +46,6 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
     this.removeSubview(selector, selectedSubview);
 
   render: ->
-    this.model.set({ username: 'Guest' }) unless this.model.escape('username')
     renderedContent = this.template({
       user: this.model
     })

@@ -45,10 +45,16 @@ $ ->
     container = $('#user-menu')
     if !container.is(e.target) && container.has(e.target).length == 0
       $('#site-wrapper').removeClass('show-nav')
-  $('#user-menu a h3').sortable {
-    over: (event, ui) ->
-      $('#site-wrapper').addClass('show-nav')
-  }
+
+      #Trying to make fridge open on drag-over, a known bug in jQuery UI appears
+      #to be preventing this from working
+  # $('#user-menu').sortable {
+  #   distance: 400,
+  #   tolerance: 'pointer',
+  #   over: (event, ui) ->
+  #     debugger
+  #     $('#site-wrapper').addClass('show-nav')
+  # }
 
   toggleNav = ->
     if $('#site-wrapper').hasClass('show-nav')
