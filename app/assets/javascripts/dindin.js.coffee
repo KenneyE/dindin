@@ -20,7 +20,8 @@ window.Dindin = {
 }
 
 $ ->
-  Dindin.initialize()
+  if !$('body').hasClass('login-background')
+    Dindin.initialize()
   $('input#guest-login').click (e) ->
     e.preventDefault()
     $('#login-email').val('guest@test.com')

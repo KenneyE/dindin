@@ -46,7 +46,6 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
 
   removeSearchSpinner: ->
     this.spinner.stop()
-    # $('#loading').remove()
 
   render: ->
     renderedContent = this.template()
