@@ -18,7 +18,6 @@ Dindin.Views.RecipeShow = Backbone.View.extend({
     else
       favorited = ""
       addOrRemove = "add to"
-    debugger
     renderedContent = this.template({
       recipe: this.model,
       ingredientMatches: this.model.ingredientMatches()
