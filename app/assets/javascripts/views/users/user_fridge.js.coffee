@@ -70,7 +70,7 @@ Dindin.Views.UserFridge = Backbone.CompositeView.extend({
   updateSavedIngredients: (id) ->
     newIngredient = new Dindin.Models.Ingredient({ id: id })
     newIngredient.fetch()
-    this.model.ingredients().add(newIngredient)
+    this.model.ingredients().add(newIngredient, { silent: true })
     ingredientIds = this.model.ingredients().map (ingredient) ->
       ingredient.get('id')
     ingredientIds = ['empty'] if ingredientIds.length == 0 
