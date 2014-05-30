@@ -47,7 +47,7 @@ $ ->
     over: (event, ui) ->
       $('#site-wrapper').addClass('show-nav')
   }
-  
+
   toggleNav = ->
     if $('#site-wrapper').hasClass('show-nav')
       $('#site-wrapper').removeClass('show-nav')

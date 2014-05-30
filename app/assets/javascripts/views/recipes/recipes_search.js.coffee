@@ -11,6 +11,28 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
     this.addSubview('.recipe-matches', recipeMatches)
     this.addSubview('.ingredient-selector-box', this.ingredientSelector)
 
+  addSearchSpinner: ->
+    spinnerOpts = {
+      lines: 13,
+      length: 20,
+      width: 20, 
+      radius: 30,
+      corners: 1,
+      rotate: 0,
+      direction: 1,
+      color: '#5A966E',
+      speed: 0.8,
+      trail: 60,
+      shadow: false,
+      hwaccel: true,
+      className: 'spinner',
+      zIndex: 2e9,
+      top: '50%',
+      left: '50%'
+    }
+    this.spinner = new Spinner(spinnerOpts).spin()
+    $('#loading').append(this.spinner.el)
+
   className: 'col-md-12 recipe'
 
   events: {
@@ -21,6 +43,10 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
     this.searchByIds(data.ids)
 
   template: JST['recipes/search']
+
+  removeSearchSpinner: ->
+    this.spinner.stop()
+    # $('#loading').remove()
 
   render: ->
     renderedContent = this.template()
@@ -52,9 +78,13 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
       formData = {
         'ingredient_ids': ids,
       }
+      this.addSearchSpinner()
+      $recipes = $('.recipe-list')
       this.collection.fetch({
         data: $.param(formData),
         add: true,
+        success: =>
+          @removeSearchSpinner()
       })
 
   togglePlaceholder: ->

@@ -17,6 +17,7 @@
 //= require backbone
 //= require bootstrap
 //= require serializeJSON
+//= require spin.min
 //= require dindin
 //= require_tree ../templates
 //= require_tree ./models
