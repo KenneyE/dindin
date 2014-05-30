@@ -1,12 +1,14 @@
-  <div class="col-md-1 col-md-offset-11"><button class="btn favorite-button <%= favorited %>" data-toggle="tooltip" title="Click to <%= addOrRemove %> favorites."><span class="glyphicon glyphicon-heart"></span></button></div>
 <div class="row">
-  <div class="text-center">
+  <div class="text-center col-xs-8 col-md-offset-2">
     <h2><%= recipe.escape('title') %></h2>
     <h6>Recipe From: <a href="<%= recipe.escape('source_site_url') %>"><%= recipe.escape('source_display_name') %></a></h6>
     <% if(recipe.escape('total_time')) { %>
       <p>Total Prep Time: <%= recipe.escape('total_time') %></p>
     <% } %>
-    <hr>
+  </div>
+  <div class="col-xs-2"><span data-toggle="tooltip" title="Click to <%= addOrRemove %> favorites."class="favorite-button <%= favorited %> glyphicon glyphicon-heart"></span></div>
+  <div class="col-xs-12">
+      <hr>
   </div>
 </div>
 <div class="row">
