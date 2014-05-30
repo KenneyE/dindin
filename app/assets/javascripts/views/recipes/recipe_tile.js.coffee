@@ -1,6 +1,7 @@
 Dindin.Views.RecipeTile = Backbone.View.extend({
   initialize: ->
     this.listenTo(this.model, 'sync', this.render)
+    this.listenTo(Dindin.currentUser, 'sync', this.render)
 
   template: JST['recipes/_tile']
 

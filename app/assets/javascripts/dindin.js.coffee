@@ -9,12 +9,14 @@ window.Dindin = {
     new Dindin.Routers.AppRouter({
       currentUser: Dindin.currentUser
     })
-    Backbone.history.start()
+    Dindin.Collections.ingredients = new Dindin.Collections.Ingredients()
+    Dindin.Collections.ingredients.fetch()
     fridge = new Dindin.Views.UserFridge {
       model: Dindin.currentUser
     }
     $('#fridge-box').append(fridge.render().$el)
     fridge.delegateEvents()
+    Backbone.history.start()
     return
 }
 

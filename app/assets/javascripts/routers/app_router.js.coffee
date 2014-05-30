@@ -3,8 +3,8 @@ Dindin.Routers.AppRouter = Backbone.Router.extend({
 
   routes: {
     "": "recipesSearch",
-    "recipes": "recipesIndex",
     "recipes/:id": "recipeShow",
+    "recipes": "recipesIndex",
     "ingredients": "ingredientsIndex",
   },
 

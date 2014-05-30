@@ -2,6 +2,7 @@ Dindin.Views.RecipesIndex = Backbone.CompositeView.extend({
   initialize: ->
     this.listenTo(this.collection, 'add', this.addRecipe)
     this.listenTo(this.collection, 'sync add', this.render)
+    this.listenTo(Dindin.currentUser, 'sync', this.render)
     this.collection.each(this.addRecipe.bind(this))
 
   addRecipe: (recipe) ->

@@ -12,16 +12,16 @@ Dindin.Views.RecipeShow = Backbone.View.extend({
   template: JST['recipes/show'],
 
   render: ->
-    debugger
     if Dindin.currentUser.favoriteRecipes().findWhere({id: this.model.id})
       favorited = "favorited"
       addOrRemove = "remove from"
     else
       favorited = ""
       addOrRemove = "add to"
+    debugger
     renderedContent = this.template({
       recipe: this.model,
-      matchedIngredients: this.model.ingredientMatches()
+      ingredientMatches: this.model.ingredientMatches()
       otherIngredients: this.model.otherIngredients() 
       favorited: favorited
       addOrRemove: addOrRemove

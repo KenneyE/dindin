@@ -30,5 +30,3 @@ Dindin.Collections.Ingredients = Backbone.Collection.extend({
 
   url: 'api/ingredients',
 })
-
-Dindin.Collections.ingredients = new Dindin.Collections.Ingredients()

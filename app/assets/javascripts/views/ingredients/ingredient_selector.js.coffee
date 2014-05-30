@@ -2,7 +2,6 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
   initialize: (options) ->
     this.formElSelector = options.formElSelector
     this.collection = Dindin.Collections.ingredients
-    this.collection.fetch()
     this.collection.each(this.addIngredient.bind(this))
     this.listenTo(this.collection, 'add', this.addIngredient)
     this.listenTo(this.collection, 'sync', this.render)
