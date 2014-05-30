@@ -83,9 +83,9 @@ Dindin.Views.IngredientSelector = Backbone.CompositeView.extend({
       connectWith: '.ing-sort',
       cancel: '.no-drag',
       remove: (event, ui) =>
-        if $(ui.item).parent().attr('id') == "fridge-ingredients"
-          id = ui.item.data('id')
-          @removeSubviewByDataId(id, '.ingredient-list')
+        # if $(ui.item).parent().attr('id') == "fridge-ingredients"
+        #   id = ui.item.data('id')
+        #   @removeSubviewByDataId(id, '.ingredient-list')
     })
 
   toggleNewPrompt: ->
