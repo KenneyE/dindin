@@ -26,7 +26,6 @@ Dindin.Routers.AppRouter = Backbone.Router.extend({
     recipesSearchView = new Dindin.Views.RecipesSearch({
     })
     this._swapView(recipesSearchView)
-    # Dindin.Tours.searchTour.start()
 
   recipeShow: (id) ->
     Dindin.Collections.recipes.fetch()

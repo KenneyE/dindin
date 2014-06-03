@@ -1,6 +1,9 @@
 Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   initialize: ->
-    Dindin.currentUser.fetch()
+    Dindin.currentUser.fetch({
+      success: =>
+        @startTour()
+    })
     this.collection = new Dindin.Collections.SearchedRecipes()
     this.ingredientSelector = new Dindin.Views.IngredientSelector({
       formElSelector: '#recipe-search-form'
@@ -85,6 +88,11 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
         success: =>
           @removeSearchSpinner()
       })
+
+  startTour: ->
+    if Dindin.currentUser.get('username') == 'Guest' || 
+      parseInt(Date.now()/1000) - Dindin.currentUser.get('created_at') < 4000
+        Dindin.Tours.searchTour.start()
 
   togglePlaceholder: ->
     $ingredientSelector = this.$el.find('.selected-ingredients')

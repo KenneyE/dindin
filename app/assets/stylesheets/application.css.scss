@@ -71,7 +71,7 @@ body.login-background:before{
 .login{
   margin-top: 100px;
   box-shadow: 3px 3px 3px #333;
-  height: 400px;
+  min-height: 400px;
   h1, h2{
     font-family: $display-font;
   }
