@@ -8,7 +8,7 @@ searchTour.addStep 'intro',
   text: [
     'Hello! Welcome to Din Din!',
     'This tour is designed to show you around the features of the app.',
-    'Feel free to click the "x" in th corner at any time to stop the tour and explore on your own.'
+    'Feel free to click the "x" in the corner at any time to stop the tour and explore on your own.'
   ]
   showCancelLink: true
   buttons: [{
@@ -51,7 +51,6 @@ searchTour.addStep 'selectedIngredients',
   text: 'Try dragging and dropping an ingredient into the search selector.'
   showCancelLink: true
   attachTo: '.selected-ingredients bottom'
-  advanceOn: { selector: '.selected-ingredients', event: 'ingredientSelected' }
   buttons: [ {
     text: 'Back'
     action: searchTour.back },
@@ -65,7 +64,7 @@ searchTour.addStep 'recipeMatches',
     'Recipes that match the ingredients appear here.',
     'Now on to what makes Din Din special...']
   showCancelLink: true
-  attachTo: '.recipe-matches right'
+  attachTo: '.recipe-list right'
   buttons: [{
     text: 'Back'
     action: searchTour.back },
@@ -94,6 +93,7 @@ searchTour.addStep 'fridgeOpen',
     'Your fridge is where you can store ingredients that you actually have on hand.',
     'You can drag and drop ingredients from here into the search field too.'
   ]
+  showCancelLink: true
   attachTo: '#user-menu right'
   buttons: [{
     text: 'Back'
@@ -110,4 +110,6 @@ searchTour.addStep 'recipeIngredients',
     be sorted by what you have and what you still need to buy.',
     'Now lets try clicking on a recipe!'
   ]
-  attachTo: '.recipe-matches right'
+  showCancelLink: true
+  attachTo: '.recipe-list right'
+  buttons: []

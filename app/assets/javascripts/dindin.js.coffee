@@ -56,6 +56,10 @@ $ ->
   #     $('#site-wrapper').addClass('show-nav')
   # }
 
+  $('a').click ->
+    if Shepherd.activeTour
+      Shepherd.activeTour.hide()
+
   toggleNav = ->
     if $('#site-wrapper').hasClass('show-nav')
       $('#site-wrapper').removeClass('show-nav')

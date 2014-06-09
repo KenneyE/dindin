@@ -88,6 +88,8 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
         success: =>
           @removeSearchSpinner()
       })
+      if Shepherd.activeTour
+        Shepherd.activeTour.show('recipeMatches')
 
   startTour: ->
     if Dindin.currentUser.get('username') == 'Guest' || 

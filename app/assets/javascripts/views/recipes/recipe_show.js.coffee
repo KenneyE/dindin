@@ -1,5 +1,6 @@
 Dindin.Views.RecipeShow = Backbone.View.extend({
-  initialize: -> 
+  initialize: ->
+    this.startTour()
     this.listenTo(this.model, 'sync', this.render)
     this.listenTo(Dindin.currentUser, 'sync', this.render)
 
@@ -30,6 +31,11 @@ Dindin.Views.RecipeShow = Backbone.View.extend({
     trigger: 'hover'
     })
     this
+
+  startTour: ->
+    if Dindin.currentUser.get('username') == 'Guest' || 
+      parseInt(Date.now()/1000) - Dindin.currentUser.get('created_at') < 4000
+        Dindin.Tours.recipeTour.start()
 
   toggleFavorite: ->
     id = this.model.id
