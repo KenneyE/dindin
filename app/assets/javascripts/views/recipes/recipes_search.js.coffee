@@ -2,7 +2,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
   initialize: ->
     Dindin.currentUser.fetch({
       success: =>
-        @startTour()
+        @startTour() unless Dindin.hadTours["search"] == true
     })
     this.collection = new Dindin.Collections.SearchedRecipes()
     this.ingredientSelector = new Dindin.Views.IngredientSelector({
@@ -34,6 +34,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
       left: '50%'
     }
     this.spinner = new Spinner(spinnerOpts).spin()
+    $('#loading').show()
     $('#loading').append(this.spinner.el)
 
   className: 'col-md-12 recipe'
@@ -49,6 +50,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
 
   removeSearchSpinner: ->
     this.spinner.stop()
+    $('#loading').hide()
 
   render: ->
     renderedContent = this.template()
@@ -95,6 +97,7 @@ Dindin.Views.RecipesSearch = Backbone.CompositeView.extend({
     if Dindin.currentUser.get('username') == 'Guest' || 
       parseInt(Date.now()/1000) - Dindin.currentUser.get('created_at') < 4000
         Dindin.Tours.searchTour.start()
+        Dindin.hadTours["search"] = true
 
   togglePlaceholder: ->
     $ingredientSelector = this.$el.find('.selected-ingredients')

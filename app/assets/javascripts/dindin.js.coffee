@@ -16,6 +16,7 @@ window.Dindin = {
     }
     $('#fridge-box').append(fridge.render().$el)
     fridge.delegateEvents()
+    this.hadTours = {"search": false, "recipes": false}
     Backbone.history.start()
     return
 }
@@ -56,9 +57,11 @@ $ ->
   #     $('#site-wrapper').addClass('show-nav')
   # }
 
-  $('a').click ->
-    if Shepherd.activeTour
-      Shepherd.activeTour.hide()
+  window.onhashchange = ->
+    unless location.hash == "#" || location.hash == ""
+      Dindin.Tours.searchTour.hide()
+    if location.hash.indexOf("#recipes/") == -1
+      Dindin.Tours.recipeTour.hide()
 
   toggleNav = ->
     if $('#site-wrapper').hasClass('show-nav')
