@@ -6,6 +6,5 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    @background = true
   end
 end
