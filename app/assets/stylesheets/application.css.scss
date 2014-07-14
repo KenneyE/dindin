@@ -256,13 +256,17 @@ h1, h2 {
     transform-style: preserve-3d;
     -webkit-transition: all .5s linear;
     transition: all .5s linear;
-    backface-visibility: hidden;
   }
-  img{
+  .img-container{
     display: block;
     width: 215px;
-    height: auto;
+    height: 140px;
     border-bottom: 2px solid white;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
   .front, .back{
     position: absolute;
@@ -294,7 +298,8 @@ h1, h2 {
     }
   }
   .caption_title {
-    height: 70px;
+    height: 60px;
+    width: 100%;
     text-align: center;
     background: #eee;
     font-weight: bold;

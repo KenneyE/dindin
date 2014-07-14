@@ -1,11 +1,13 @@
 <div class="recipe-tile">
   <div class="recipe-tile-inner">
   <div class="front">
-    <% if(recipe.escape('large_image_url')){ %>
-      <img src="<%= recipe.escape('large_image_url') %>" />
-    <% }else{ %>
-      <img src="<%= recipe.escape('small_image_url') %>" />
-    <% } %>
+    <div class="img-container">
+      <% if(recipe.escape('large_image_url')){ %>
+        <img src="<%= recipe.escape('large_image_url') %>" />
+      <% }else{ %>
+        <img src="<%= recipe.escape('small_image_url') %>" />
+      <% } %>
+    </div>
     <div class="caption_title">
       <h5><%= recipe.escape('title') %></h5>
     </div>

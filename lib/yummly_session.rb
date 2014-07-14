@@ -25,12 +25,13 @@ class YummlySession
       recipe = {
         title: match['recipeName'],
         ingredients: match['ingredients'].join('|'),
-        small_image_url: match['smallImageUrls'][0],
+        small_image_url: match['imageUrlsBySize']['90'],
         total_time_in_seconds: match['totalTimeInSeconds'],
         source_display_name: match['sourceDisplayName'],
         yummly_id: match['id']
 
       }
+      # fail
       recipes << recipe
     end
 
@@ -46,6 +47,8 @@ class YummlySession
     }
 
     response = HTTParty.get("http://api.yummly.com/v1/api/recipe/#{recipe_id}", options)
+    raise 'no response from Yummly' unless response
+
     p = JSON.parse(response.body)
 
     {
